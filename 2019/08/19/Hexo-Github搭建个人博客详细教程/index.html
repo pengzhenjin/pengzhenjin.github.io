@@ -357,6 +357,22 @@
   
 
   
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/08/19/Hexo-Github搭建个人博客详细教程/",
+  owner: 'pengzhenjin',
+  repo: 'pengzhenjin.github.io',
+  oauth: {
+    client_id: '66d36eec282f4b1bff19',
+    client_secret: '7c1c32557c75666112016f76cf0c96ed66386c23',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
