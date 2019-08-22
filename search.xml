@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[网站导航]]></title>
+    <url>%2F2019%2F08%2F21%2F%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA%2F</url>
+    <content type="text"><![CDATA[在线学习（提升自身技能） 网易云课堂腾讯课堂阿里云大学百度传课慕课网51CTO学院极客学院麦子学院中国大学MOOCMOOC中国学堂在线多贝公开课优达学城Udemycoursera &nbsp; Android技术博客（提升自身技能） 彭锡（github：https://github.com/cnmen）闲蛋（github：https://github.com/dengyuhan）罗升阳邓凡平魏祝林Trinea（github：https://github.com/trinea）张汉国（github：https://github.com/halzhang）wyouflf（github：https://github.com/wyouflf）张兴业代码家（github：https://github.com/daimajia）stormzhang（github：https://github.com/stormzhang）郭霖张鸿洋（github：https://github.com/hongyangAndroid）任玉刚（github：https://github.com/singwhatiwanna）农民伯伯（github：https://github.com/over140）书呆子（github：https://github.com/pedant）大头鬼（github：https://github.com/lzyzsd）markzhai（github：https://github.com/markzhai） &nbsp; 招聘网站（找工作） 拉钩网BOSS直聘猎聘网100offer内推]]></content>
+      <tags>
+        <tag>在线学习</tag>
+        <tag>在线课堂</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo+Github搭建个人博客详细教程（Windows版本）]]></title>
+    <url>%2F2019%2F08%2F19%2FHexo-Github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[前言 什么是Hexo ? 准备工作 搭建github博客 创建仓库 绑定域名 配置SSH key 测试是否成功 使用hexo写博客]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F08%2F19%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+</search>
