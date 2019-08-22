@@ -1062,6 +1062,16 @@ pre .javascript .function {
     opacity: 0.8;
   }
 }
+.reading-progress-bar {
+  background: #37c6c0;
+  display: block;
+  height: 2px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 0;
+  z-index: 9999;
+}
 .header {
   background: transparent;
 }
@@ -1784,7 +1794,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #88ffc6;
+  background: #5eff9d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2023,9 +2033,6 @@ pre .javascript .function {
 }
 .footer-inner {
   text-align: center;
-}
-#animate {
-  animation: iconAnimate 1.33s ease-in-out infinite;
 }
 .with-love {
   color: #808080;
