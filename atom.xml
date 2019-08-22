@@ -50,7 +50,7 @@
     <link href="http://pengzhenjin.top/2019/08/20/Hexo+NexT%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%86%85%E5%AE%B9%E4%BC%98%E5%8C%96/"/>
     <id>http://pengzhenjin.top/2019/08/20/Hexo+NexT搭建个人博客（三）：内容优化/</id>
     <published>2019-08-19T16:00:00.000Z</published>
-    <updated>2019-08-22T15:05:22.655Z</updated>
+    <updated>2019-08-22T15:11:25.813Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着互联网浪潮的翻腾，国内外涌现出越来越多优秀的社交网站让用户分享信息更加便捷。然后，如果你是一个不甘寂寞的程序猿（媛），是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。</p><a id="more"></a><h3 id="什么是Hexo-？"><a href="#什么是Hexo-？" class="headerlink" title="什么是Hexo ？"></a>什么是Hexo ？</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><h3 id="安装NexT主题"><a href="#安装NexT主题" class="headerlink" title="安装NexT主题"></a>安装NexT主题</h3>]]></content>
     
@@ -61,6 +61,8 @@
     </summary>
     
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
+    
+      <category term="博客" scheme="http://pengzhenjin.top/categories/Hexo/%E5%8D%9A%E5%AE%A2/"/>
     
     
       <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
@@ -96,7 +98,7 @@
     <link href="http://pengzhenjin.top/2019/08/19/Hexo+NexT%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
     <id>http://pengzhenjin.top/2019/08/19/Hexo+NexT搭建个人博客（二）：主题配置/</id>
     <published>2019-08-18T16:00:00.000Z</published>
-    <updated>2019-08-22T15:05:09.450Z</updated>
+    <updated>2019-08-22T15:11:18.366Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着互联网浪潮的翻腾，国内外涌现出越来越多优秀的社交网站让用户分享信息更加便捷。然后，如果你是一个不甘寂寞的程序猿（媛），是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。</p><a id="more"></a><h3 id="什么是Hexo-？"><a href="#什么是Hexo-？" class="headerlink" title="什么是Hexo ？"></a>什么是Hexo ？</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><h3 id="安装NexT主题"><a href="#安装NexT主题" class="headerlink" title="安装NexT主题"></a>安装NexT主题</h3>]]></content>
     
@@ -107,6 +109,8 @@
     </summary>
     
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
+    
+      <category term="博客" scheme="http://pengzhenjin.top/categories/Hexo/%E5%8D%9A%E5%AE%A2/"/>
     
     
       <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
