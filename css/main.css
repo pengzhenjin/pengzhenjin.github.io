@@ -1387,10 +1387,10 @@ pre .javascript .function {
 }
 .posts-expand .post-eof {
   background: #ccc;
-  height: 1px;
+  height: 0px;
   margin: 80px auto 60px;
   text-align: center;
-  width: 8%;
+  width: 0%;
 }
 .post:last-child .post-eof {
   display: none;
@@ -1451,10 +1451,8 @@ pre .javascript .function {
   visibility: visible;
 }
 .posts-expand .post-body img {
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-  margin: 0 auto 20px;
-  padding: 3px;
+  border: none;
+  padding: 0px;
 }
 .post-gallery {
   border-collapse: separate;
@@ -1828,7 +1826,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff69a6;
+  background: #5da80e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
