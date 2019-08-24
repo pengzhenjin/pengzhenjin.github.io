@@ -33,24 +33,20 @@ NexT.utils = {
    * Wrap images with fancybox.
    */
   wrapImageWithFancyBox: function() {
-    document.querySelectorAll('.post-body img').forEach(element => {
+    document.querySelectorAll('.post-body :not(a) > img').forEach(element => {
       var $image = $(element);
-      var imageTitle = $image.attr('title') || $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-
-      if ($imageWrapLink.length < 1) {
-        var imageLink = $image.attr('data-src') || $image.attr('src');
-        $imageWrapLink = $image.wrap(`<a class="fancybox fancybox.image" href="${imageLink}" itemscope itemtype="http://schema.org/ImageObject" itemprop="url"></a>`).parent('a');
-        if ($image.is('.post-gallery img')) {
-          $imageWrapLink.addClass('post-gallery-img');
-          $imageWrapLink.attr('data-fancybox', 'gallery').attr('rel', 'gallery');
-        } else if ($image.is('.group-picture img')) {
-          $imageWrapLink.attr('data-fancybox', 'group').attr('rel', 'group');
-        } else {
-          $imageWrapLink.attr('data-fancybox', 'default').attr('rel', 'default');
-        }
+      var imageLink = $image.attr('data-src') || $image.attr('src');
+      var $imageWrapLink = $image.wrap(`<a class="fancybox fancybox.image" href="${imageLink}" itemscope itemtype="http://schema.org/ImageObject" itemprop="url"></a>`).parent('a');
+      if ($image.is('.post-gallery img')) {
+        $imageWrapLink.addClass('post-gallery-img');
+        $imageWrapLink.attr('data-fancybox', 'gallery').attr('rel', 'gallery');
+      } else if ($image.is('.group-picture img')) {
+        $imageWrapLink.attr('data-fancybox', 'group').attr('rel', 'group');
+      } else {
+        $imageWrapLink.attr('data-fancybox', 'default').attr('rel', 'default');
       }
 
+      var imageTitle = $image.attr('title') || $image.attr('alt');
       if (imageTitle) {
         $imageWrapLink.append(`<p class="image-caption">${imageTitle}</p>`);
         // Make sure img title tag will show correctly in fancybox
@@ -338,8 +334,27 @@ NexT.utils = {
     return selector.replace(/[!"$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '\\$&');
   },
 
+  /**
+   * Init Sidebar & TOC inner dimensions on all pages and for all schemes.
+   * Need for Sidebar/TOC inner scrolling if content taller then viewport.
+   */
+  initSidebarDimension: function() {
+    var sidebarInner = $('.sidebar-inner');
+    var sidebarPadding = sidebarInner.innerWidth() - sidebarInner.width();
+    var sidebarNavHeight = $('.sidebar-nav').css('display') === 'block' ? $('.sidebar-nav').outerHeight(true) : 0;
+    var sidebarOffset = CONFIG.sidebar.offset || 12;
+    var sidebarb2tHeight = CONFIG.back2top.enable && CONFIG.back2top.sidebar ? document.querySelector('.back-to-top').height() : sidebarOffset;
+    var sidebarSchemePadding = NexT.utils.isPisces() || NexT.utils.isGemini()
+      ? (sidebarPadding * 2) + sidebarNavHeight + sidebarOffset + sidebarb2tHeight
+      : (sidebarPadding * 2) + (sidebarNavHeight / 2);
+    // Initialize Sidebar & TOC Height.
+    var sidebarWrapperHeight = document.body.clientHeight - sidebarSchemePadding;
+    $('.site-overview-wrap, .post-toc-wrap').css('max-height', sidebarWrapperHeight);
+  },
+
   updateSidebarPosition: function() {
     if (!this.isDesktop() || this.isPisces() || this.isGemini()) {
+      this.initSidebarDimension();
       return;
     }
     // Expand sidebar on post detail page by default, when post has a toc.
@@ -353,18 +368,6 @@ NexT.utils = {
     if (display) {
       window.dispatchEvent(new Event('sidebar:show'));
     }
-  },
-
-  getSidebarSchemePadding: function() {
-    var sidebarInner = $('.sidebar-inner');
-    var sidebarPadding = sidebarInner.innerWidth() - sidebarInner.width();
-    var sidebarNavHeight = $('.sidebar-nav').css('display') === 'block' ? $('.sidebar-nav').outerHeight(true) : 0;
-    var sidebarOffset = CONFIG.sidebar.offset || 12;
-    var sidebarb2tHeight = CONFIG.back2top.enable && CONFIG.back2top.sidebar ? document.querySelector('.back-to-top').height() : sidebarOffset;
-    var sidebarSchemePadding = this.isPisces() || this.isGemini()
-      ? (sidebarPadding * 2) + sidebarNavHeight + sidebarOffset + sidebarb2tHeight
-      : (sidebarPadding * 2) + (sidebarNavHeight / 2);
-    return sidebarSchemePadding;
   },
 
   getScript: function(url, callback, condition) {

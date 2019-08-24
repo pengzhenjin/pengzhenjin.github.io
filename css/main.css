@@ -1160,18 +1160,18 @@ pre .javascript .function {
   padding-left: 0;
   text-align: center;
 }
-.menu .menu-item {
+.menu-item {
   display: inline-block;
   list-style: none;
   margin: 0 10px;
 }
 @media (max-width: 767px) {
-  .menu .menu-item {
+  .menu-item {
     margin-top: 10px;
   }
 }
-.menu .menu-item a,
-.menu .menu-item span.exturl {
+.menu-item a,
+.menu-item span.exturl {
   border-bottom: 1px solid transparent;
   display: block;
   font-size: 0.8125em;
@@ -1181,11 +1181,11 @@ pre .javascript .function {
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
-.menu .menu-item a:hover,
-.menu .menu-item span.exturl:hover {
+.menu-item a:hover,
+.menu-item span.exturl:hover {
   border-bottom-color: #222;
 }
-.menu .menu-item .fa {
+.menu-item .fa {
   margin-right: 5px;
 }
 .use-motion .menu-item {
@@ -1387,10 +1387,10 @@ pre .javascript .function {
 }
 .posts-expand .post-eof {
   background: #ccc;
-  height: 0px;
+  height: 1px;
   margin: 80px auto 60px;
   text-align: center;
-  width: 0%;
+  width: 8%;
 }
 .post:last-child .post-eof {
   display: none;
@@ -1451,8 +1451,10 @@ pre .javascript .function {
   visibility: visible;
 }
 .posts-expand .post-body img {
-  border: none;
-  padding: 0px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  margin: 0 auto 20px;
+  padding: 3px;
 }
 .post-gallery {
   border-collapse: separate;
@@ -1826,7 +1828,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #de0dcf;
+  background: #2521aa;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1976,8 +1978,10 @@ pre .javascript .function {
   overflow-x: hidden;
   overflow-y: auto;
 }
-.post-toc ol {
+.post-toc {
   font-size: 0.875em;
+}
+.post-toc ol {
   list-style: none;
   margin: 0;
   padding: 0 2px 5px 10px;
