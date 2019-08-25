@@ -61,11 +61,11 @@
   </entry>
   
   <entry>
-    <title>Hexo搭建个人博客（三）：内容优化</title>
-    <link href="http://pengzhenjin.top/2019/08/17/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%86%85%E5%AE%B9%E4%BC%98%E5%8C%96/"/>
-    <id>http://pengzhenjin.top/2019/08/17/Hexo搭建个人博客（三）：内容优化/</id>
+    <title>Hexo搭建个人博客（三）：主题美化</title>
+    <link href="http://pengzhenjin.top/2019/08/17/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    <id>http://pengzhenjin.top/2019/08/17/Hexo搭建个人博客（三）：主题美化/</id>
     <published>2019-08-16T16:00:00.000Z</published>
-    <updated>2019-08-23T13:27:15.755Z</updated>
+    <updated>2019-08-25T10:10:24.789Z</updated>
     
     <summary type="html">
     
@@ -87,17 +87,11 @@
     <link href="http://pengzhenjin.top/2019/08/16/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
     <id>http://pengzhenjin.top/2019/08/16/Hexo搭建个人博客（二）：主题配置/</id>
     <published>2019-08-15T16:00:00.000Z</published>
-    <updated>2019-08-23T13:26:15.145Z</updated>
+    <updated>2019-08-25T10:02:36.671Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;安装-NexT-主题&quot;&gt;&lt;a href=&quot;#安装-NexT-主题&quot; class=&quot;headerlink&quot; title=&quot;安装 NexT 主题&quot;&gt;&lt;/a&gt;安装 NexT
-        
-      
+      &lt;h3 id=&quot;什么是-NexT-？&quot;&gt;&lt;a href=&quot;#什么是-NexT-？&quot; class=&quot;headerlink&quot; title=&quot;什么是 NexT ？&quot;&gt;&lt;/a&gt;什么是 NexT ？&lt;/h3&gt;&lt;p&gt;Next 是专门为 Hexo 而定制的一款主题。它简单、清新、优雅，一个主题，三种外观，而且还支持多种语言，选您所好。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;screenshot_1.png&quot; alt&gt;&lt;/p&gt;&lt;h3 id=&quot;配置文件说明&quot;&gt;&lt;a href=&quot;#配置文件说明&quot; class=&quot;headerlink&quot; title=&quot;配置文件说明&quot;&gt;&lt;/a&gt;配置文件说明&lt;/h3&gt;&lt;p&gt;在 Hexo 中有两份主要的配置文件，其名称都是 &lt;code&gt;_config.yml&lt;/code&gt;。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。&lt;/p&gt;
     
     </summary>
     
