@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="自定样式您可以将所有自定义样式文件放在 hexo-size/source/_data 目录下。编辑 主题配置文件 _config.yml ，取消 custom_file_path 前面的注释。1234567891011custom_file_path:  #head: source/_data/head.swig  #header: source/_data/header.swig  #sideb">
+<meta name="keywords" content="Hexo,博客,NexT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo搭建个人博客（三）：主题美化">
+<meta property="og:url" content="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/index.html">
+<meta property="og:site_name" content="彭真进的博客">
+<meta property="og:description" content="自定样式您可以将所有自定义样式文件放在 hexo-size/source/_data 目录下。编辑 主题配置文件 _config.yml ，取消 custom_file_path 前面的注释。1234567891011custom_file_path:  #head: source/_data/head.swig  #header: source/_data/header.swig  #sideb">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/screenshot_1.png">
+<meta property="og:image" content="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/screenshot_2.png">
+<meta property="og:image" content="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/screenshot_3.png">
+<meta property="og:updated_time" content="2019-08-26T09:01:43.048Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo搭建个人博客（三）：主题美化">
+<meta name="twitter:description" content="自定样式您可以将所有自定义样式文件放在 hexo-size/source/_data 目录下。编辑 主题配置文件 _config.yml ，取消 custom_file_path 前面的注释。1234567891011custom_file_path:  #head: source/_data/head.swig  #header: source/_data/header.swig  #sideb">
+<meta name="twitter:image" content="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/screenshot_1.png">
+  <link rel="canonical" href="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hexo搭建个人博客（三）：主题美化 | 彭真进的博客</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ede0ba70e7eb2eb800e94196368893eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭真进的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-wrapper">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭真进">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭真进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Hexo搭建个人博客（三）：主题美化
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-17T00:00:00+08:00">2018-08-17</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>9.1k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>8 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="自定样式"><a href="#自定样式" class="headerlink" title="自定样式"></a>自定样式</h3><p>您可以将所有自定义样式文件放在 <code>hexo-size/source/_data</code> 目录下。<br>编辑 主题配置文件 <code>_config.yml</code> ，取消 <code>custom_file_path</code> 前面的注释。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  #head: source/_data/head.swig</span><br><span class="line">  #header: source/_data/header.swig</span><br><span class="line">  #sidebar: source/_data/sidebar.swig</span><br><span class="line">  #postMeta: source/_data/post-meta.swig</span><br><span class="line">  #postBodyEnd: source/_data/post-body-end.swig</span><br><span class="line">  #footer: source/_data/footer.swig</span><br><span class="line">  #bodyEnd: source/_data/body-end.swig</span><br><span class="line">  #variable: source/_data/variables.styl</span><br><span class="line">  #mixin: source/_data/mixins.styl</span><br><span class="line">  style: source/_data/styles.styl</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<h3 id="设置-RSS"><a href="#设置-RSS" class="headerlink" title="设置 RSS"></a>设置 RSS</h3><p>NexT 中 RSS 有三个设置选项，满足特定的使用场景。</p>
+<ul>
+<li>false：禁用 RSS，不在页面上显示 RSS 连接。</li>
+<li>留空：使用 Hexo 生成的 Feed 链接。 你可以需要先安装 <a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="noopener">hexo-generator-feed</a> 插件。</li>
+<li>具体的URL：这个URL需要您提前生成（如：/atom.xml）。<br>编辑 主题配置文件 <code>_config.yml</code> 。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rss: false    # 禁用 RSS</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="添加「分类」页面"><a href="#添加「分类」页面" class="headerlink" title="添加「分类」页面"></a>添加「分类」页面</h3><p>在终端窗口下，定位到 Hexo 站点根目录下，使用 <code>hexo new page</code> 命令新建一个页面，命名为 <code>categories</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<p>此时会在 <code>hexo-size/source</code> 目录下生成一个 <code>categories</code> 文件夹，打开 <code>categories</code> 文件夹，修改 <code>index.md</code> 文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 分类</span><br><span class="line">date: 2019-08-20 13:17:57</span><br><span class="line">type: &quot;categories&quot;    # 将页面的类型设置为 categories</span><br><span class="line">comments: false       # 该页面禁用评论</span><br></pre></td></tr></table></figure>
+
+<p>编辑 主题配置文件 <code>_config.yml</code> ， 添加 <code>categories</code> 到 <code>menu</code> 中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home                       # 首页</span><br><span class="line">  archives: /archives/ || archive       # 归档</span><br><span class="line">  categories: /categories/ || th        # 分类</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加「标签」页面"><a href="#添加「标签」页面" class="headerlink" title="添加「标签」页面"></a>添加「标签」页面</h3><p>在终端窗口下，定位到 Hexo 站点根目录下，使用 <code>hexo new page</code> 命令新建一个页面，命名为 <code>tags</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p>此时会在 <code>hexo-size/source</code> 目录下生成一个 <code>tags</code> 文件夹，打开 <code>tags</code> 文件夹，修改 <code>index.md</code> 文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: 2019-08-20 13:17:57</span><br><span class="line">type: &quot;tags&quot;       # 将页面的类型设置为 tags</span><br><span class="line">comments: false    # 该页面禁用评论</span><br></pre></td></tr></table></figure>
+
+<p>编辑 主题配置文件 <code>_config.yml</code> ， 添加 <code>tags</code> 到 <code>menu</code> 中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home                       # 首页</span><br><span class="line">  archives: /archives/ || archive       # 归档</span><br><span class="line">  categories: /categories/ || th        # 分类</span><br><span class="line">  tags: /tags/ || tags                  # 标签</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加「关于」页面"><a href="#添加「关于」页面" class="headerlink" title="添加「关于」页面"></a>添加「关于」页面</h3><p>在终端窗口下，定位到 Hexo 站点根目录下，使用 <code>hexo new page</code> 命令新建一个页面，命名为 <code>about</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
+
+<p>此时会在 <code>hexo-size/source</code> 目录下生成一个 <code>about</code> 文件夹，打开 <code>about</code> 文件夹，修改 <code>index.md</code> 文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 关于</span><br><span class="line">date: 2019-08-20 13:17:57</span><br><span class="line">type: &quot;about&quot;      # 将页面的类型设置为 about</span><br></pre></td></tr></table></figure>
+
+<p>编辑 主题配置文件 <code>_config.yml</code> ， 添加 <code>about</code> 到 <code>menu</code> 中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home                       # 首页</span><br><span class="line">  archives: /archives/ || archive       # 归档</span><br><span class="line">  categories: /categories/ || th        # 分类</span><br><span class="line">  tags: /tags/ || tags                  # 标签</span><br><span class="line">  about: /about/ || user                # 关于</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置代码块样式"><a href="#设置代码块样式" class="headerlink" title="设置代码块样式"></a>设置代码块样式</h3><p>NexT 使用 <a href="https://github.com/chriskempson/tomorrow-theme" target="_blank" rel="noopener">Tomorrow Theme</a> 作为代码高亮，共有5款主题供你选择。</p>
+<ul>
+<li>normal</li>
+<li>night</li>
+<li>night blue</li>
+<li>night bright</li>
+<li>night eighties</li>
+</ul>
+<p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">codeblock:  </span><br><span class="line">  highlight_theme: night    # 设置代码高亮主题为：night         </span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true            # 代码块是否添加复制按钮</span><br><span class="line">    show_result: true       # 是否显示文本复制结果</span><br><span class="line">    style: flat             # 复制按钮的样式，值：default、flat、mac</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置阅读进度条样式"><a href="#设置阅读进度条样式" class="headerlink" title="设置阅读进度条样式"></a>设置阅读进度条样式</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reading_progress:</span><br><span class="line">  enable: false    # 是否启用阅读进度条</span><br><span class="line">  position: top    # 位置，值：top、bottom</span><br><span class="line">  color: &quot;#37c6c0&quot; # 颜色</span><br><span class="line">  height: 2px      # 高度</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置书签"><a href="#设置书签" class="headerlink" title="设置书签"></a>设置书签</h3><p>书签是一个插件，允许您阅读的时候保存阅读进度。您可以在页面上单击书签图标（如：🔖），将会保存滚动的位置，当您下次再访问的时候，便可以自动恢复到每个页面的最后滚动位置。<br>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bookmark:   </span><br><span class="line">  enable: false    # 是否启用书签</span><br><span class="line">  color: &quot;#222&quot;    # 书签颜色</span><br><span class="line">  # 如果是 auto ，则在关闭页面或单击书签图标时保存阅读进度</span><br><span class="line">  # 如果是 manual ，则需点击书签图标保存它</span><br><span class="line">  save: auto       # 保存设置，值：auto、manual</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置社交链接"><a href="#设置社交链接" class="headerlink" title="设置社交链接"></a>设置社交链接</h3><p>侧栏社交链接的修改包含两个部分，第一是链接，第二是链接图标。</p>
+<ul>
+<li>social：设置社交链接。</li>
+<li>social_icons：设置社交链接图标。</li>
+</ul>
+<p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/pengzhenjin || github</span><br><span class="line">  E-Mail: mailto:562260994@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || facebook</span><br><span class="line">  #VK Group: https://vk.com/yourname || vk</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || skype</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">social_icons:</span><br><span class="line">  enable: true        # 是否启用社交链接图标</span><br><span class="line">  icons_only: false</span><br><span class="line">  transition: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置友情链接"><a href="#设置友情链接" class="headerlink" title="设置友情链接"></a>设置友情链接</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">links_settings:</span><br><span class="line">  icon: link        # 友情链接图标</span><br><span class="line">  title: 友情链接    # 友情链接标题</span><br><span class="line">  layout: inline    # 友情链接布局样式，值：block、inline</span><br><span class="line"></span><br><span class="line">links:</span><br><span class="line">  Hexo: https://hexo.io/zh-cn</span><br><span class="line">  NexT: https://theme-next.org/docs</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置文章目录"><a href="#设置文章目录" class="headerlink" title="设置文章目录"></a>设置文章目录</h3><p>默认情况下，NexT 的文章目录显示在侧边栏中。<br>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true      # 是否使用文章目录</span><br><span class="line">  number: true      # 是否自动编号</span><br><span class="line">  wrap: false       # 如果标题超长，是否换行</span><br><span class="line">  expand_all: true  # 标题目录是否完全展开</span><br><span class="line">  max_depth: 6      # 最大层次深度</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置回到顶部按钮"><a href="#设置回到顶部按钮" class="headerlink" title="设置回到顶部按钮"></a>设置回到顶部按钮</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  enable: true         # 是否启用回到顶部按钮</span><br><span class="line">  sidebar: false       # 是否在侧边栏显示回到顶部按钮</span><br><span class="line">  scrollpercent: true  # 是否显示当前滚动进度百分比</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置站点建立时间"><a href="#设置站点建立时间" class="headerlink" title="设置站点建立时间"></a>设置站点建立时间</h3><p>这个时间将在站点的底部显示，例如 © 2018 - 2019。<br>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  since: 2018    # 站点建站年份，如果不配置，采用当前年份</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置站点底部图标"><a href="#设置站点底部图标" class="headerlink" title="设置站点底部图标"></a>设置站点底部图标</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  icon:                 </span><br><span class="line">    name: user        # 图标名称，See: https://fontawesome.com/v4.7.0/icons			</span><br><span class="line">    animated: true    # 是否开启图标动画</span><br><span class="line">    color: &quot;#808080&quot;  # 图标颜色</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置站点底部版权声明"><a href="#设置站点底部版权声明" class="headerlink" title="设置站点底部版权声明"></a>设置站点底部版权声明</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  copyright: &apos;张三 版权所有&apos;    # 版权声明</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置站点底部平台信息"><a href="#设置站点底部平台信息" class="headerlink" title="设置站点底部平台信息"></a>设置站点底部平台信息</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  powered:          </span><br><span class="line">    enable: false   # 是否显示 Hexo 链接(Powered by Hexo)</span><br><span class="line">    version: false  # 是否显示 Hexo 链接后的版本信息(vX.X.X)</span><br><span class="line"></span><br><span class="line">  theme:    </span><br><span class="line">    enable: false   # 是否显示 Theme 链接信息(Theme - NexT.scheme)</span><br><span class="line">    version: false  # 是否显示 Theme 链接信息后的版本信息(vX.X.X)</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置站点底部备案信息"><a href="#设置站点底部备案信息" class="headerlink" title="设置站点底部备案信息"></a>设置站点底部备案信息</h3><p>默认情况下，NexT 不会显示 备案 信息。<br>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  beian:</span><br><span class="line">    enable: true</span><br><span class="line">    icp: 京ICP备 1234567890号-1</span><br><span class="line">    gongan_id: 1234567890</span><br><span class="line">    gongan_num: 京公网安备 1234567890号</span><br><span class="line">    gongan_icon_url: /uploads/beian.png</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置文章摘要"><a href="#设置文章摘要" class="headerlink" title="设置文章摘要"></a>设置文章摘要</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:      </span><br><span class="line">  enable: true      # 是否启用自动摘要,不建议，请使用&lt;!-- more --&gt;进行精确控制</span><br><span class="line">  length: 150       # 从开始往后选取的摘要文字数量</span><br><span class="line"></span><br><span class="line">read_more_btn: true # 是否显示 “阅读全文” 按钮</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置文章-Meta"><a href="#设置文章-Meta" class="headerlink" title="设置文章 Meta"></a>设置文章 Meta</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">post_meta:          </span><br><span class="line">  item_text: true      # 是否显示文章 “发表于XX”</span><br><span class="line">  created_at: true     # 是否显示文章创建日期</span><br><span class="line">  updated_at:    </span><br><span class="line">    enable: false      # 是否显示文章修改日期</span><br><span class="line">    another_day: true</span><br><span class="line">  categories: true     # 是否显示文章所属分类</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置文章字数统计和阅读时长"><a href="#设置文章字数统计和阅读时长" class="headerlink" title="设置文章字数统计和阅读时长"></a>设置文章字数统计和阅读时长</h3><p>依赖第三方插件 <code>hexo-symbols-count-time</code>，See：<a href="https://github.com/theme-next/hexo-symbols-count-time" target="_blank" rel="noopener">https://github.com/theme-next/hexo-symbols-count-time</a>。<br>在终端窗口下，定位到 Hexo 站点根目录下，使用 <code>npm install hexo-symbols-count-time --save</code> 命令安装插件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-symbols-count-time --save</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，在 站点配置文件 <code>_config.yml</code> 中配置 <code>symbols_count_time</code> 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true            # 是否在文章 meta 中显示本文字数</span><br><span class="line">  time: true               # 是否在文章 meta 中显示阅读时长</span><br><span class="line">  total_symbols: true      # 是否在站点底部显示总字数</span><br><span class="line">  total_time: true         # 是否在站点底部显示阅读时长</span><br><span class="line">  exclude_codeblock: false</span><br></pre></td></tr></table></figure>
+
+<p>最后在 主题配置文件 <code>_config.yml</code> 中配置 <code>symbols_count_time</code> 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true  </span><br><span class="line">  item_text_post: true  </span><br><span class="line">  item_text_total: true </span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置文章底部标签图标"><a href="#设置文章底部标签图标" class="headerlink" title="设置文章底部标签图标"></a>设置文章底部标签图标</h3><p>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tag_icon: true    # 是否显示标签图标，默认显示 “#” 符号</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置文章微信订阅"><a href="#设置文章微信订阅" class="headerlink" title="设置文章微信订阅"></a>设置文章微信订阅</h3><p>获取您的微信二维码图片，将其放入 <code>hexo-size/source/uploads</code> 目录下，如果 uploads 目录不存在，则新建。<br>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wechat_subscriber:</span><br><span class="line">  enable: true</span><br><span class="line">  qcode: /uploads/wechat-qcode.jpg</span><br><span class="line">  description: Welcome to scan the WeChat Public Account QRcode and subscribe my blog!</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置打赏功能"><a href="#设置打赏功能" class="headerlink" title="设置打赏功能"></a>设置打赏功能</h3><p>获取您的微信、支付宝收款二维码图片，将其放入 <code>hexo-size/source/uploads</code> 目录下，如果 uploads 目录不存在，则新建。<br>编辑 主题配置文件 <code>_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">reward_settings:</span><br><span class="line">  # If true, reward would be displayed in every article by default. # 如果为true，默认情况下，每篇文章都会显示奖励。</span><br><span class="line">  # You can show or hide reward in a specific article throuth `reward: true | false` in Front-matter.</span><br><span class="line">  enable: true</span><br><span class="line">  animation: false</span><br><span class="line">  #comment: Donate comment here.</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  wechatpay: /uploads/wechatpay.png      # 微信打赏二维码</span><br><span class="line">  alipay: /uploads/alipay.png            # 支付宝打赏二维码</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置相关文章功能"><a href="#设置相关文章功能" class="headerlink" title="设置相关文章功能"></a>设置相关文章功能</h3><p>依赖第三方插件 <code>hexo-related-popular-posts</code>，See：<a href="https://github.com/tea3/hexo-related-popular-posts" target="_blank" rel="noopener">https://github.com/tea3/hexo-related-popular-posts</a>。<br>在终端窗口下，定位到 Hexo 站点根目录下，使用 <code>npm install hexo-related-popular-posts --save</code> 命令安装插件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，在 主题配置文件 <code>_config.yml</code>中配置 <code>related_posts</code> 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">related_posts: </span><br><span class="line">  enable: true</span><br><span class="line">  title:                   # 默认情况下，NexT 使用 “相关文章” 作为标题，你也可以自定义</span><br><span class="line">  display_in_home: false   # 是否在主页面显示相关文章信息</span><br><span class="line">  params:</span><br><span class="line">    maxCount: 5            # 最多显示5篇相关文章信息，你也可以自定义</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加本地搜索"><a href="#添加本地搜索" class="headerlink" title="添加本地搜索"></a>添加本地搜索</h3><p>依赖第三方插件 <code>hexo-generator-search</code>，See：<a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">https://github.com/wzpan/hexo-generator-search</a>。<br>在终端窗口下，定位到 Hexo 站点根目录下，使用 <code>npm install hexo-generator-search --save</code> 命令安装插件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，在 站点配置文件 <code>_config.yml</code>中配置 <code>search</code> 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+
+<p>最后在 主题配置文件 <code>_config.yml</code> 中配置 <code>local_search</code> 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line"></span><br><span class="line">  # 如果值为&apos;auto&apos;，通过改变输入信息来触发搜索；如果值为&apos;manual&apos;，按enter键或search按钮来触发搜索</span><br><span class="line">  trigger: auto</span><br><span class="line"></span><br><span class="line">  # 显示每篇文章的前n个结果，通过设置为-1显示所有结果</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line"></span><br><span class="line">  # 是否将html字符串解义为可读的字符串</span><br><span class="line">  unescape: false</span><br><span class="line"></span><br><span class="line">  # 是否在页面加载时预加载搜索数据</span><br><span class="line">  preload: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置Gitalk评论系统"><a href="#设置Gitalk评论系统" class="headerlink" title="设置Gitalk评论系统"></a>设置Gitalk评论系统</h3><p>Gitalk 是一个基于 Github Issue 的评论插件，使用 Github 帐号登录，界面干净整洁，支持 MarkDown 语法。</p>
+<p>在自己的 Github 账号下创建一个仓库用来存放评论信息，仓库类型为 public 。<br><img src="screenshot_1.png" alt></p>
+<p>创建 Github OAuth Application 用来授权登录，如果没有 点击这里注册一个新的 <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">OAuth Application</a>。<br><img src="screenshot_2.png" alt></p>
+<p>创建完成后，会生成一个 <code>Client ID</code> 和 <code>Client Secret</code><br><img src="screenshot_3.png" alt></p>
+<p>最后在 主题配置文件 <code>_config.yml</code> 中配置 <code>gitalk</code> 信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: &apos;pengzhenjin&apos;                                   # GitHub账户名</span><br><span class="line">  repo: &apos;pengzhenjin.github.io&apos;                              # 存储评论的仓库名</span><br><span class="line">  client_id: &apos;2e07c2563cfbca1908e8&apos;                          # GitHub Application Client ID</span><br><span class="line">  client_secret: &apos;e7669e875bc3881cb2c3fea6ce057d03fd7afc5a&apos;  # GitHub Application Client Secret</span><br><span class="line">  admin_user: &apos;pengzhenjin&apos;                                  # GitHub账户名</span><br><span class="line">  distraction_free_mode: true</span><br><span class="line">  language: zh-CN</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2018\08\16\Hexo搭建个人博客（二）：主题配置\" rel="bookmark">Hexo搭建个人博客（二）：主题配置</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2018\08\15\Hexo搭建个人博客（一）：基础安装\" rel="bookmark">Hexo搭建个人博客（一）：基础安装</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2018\08\20\Hexo常用命令详解\" rel="bookmark">Hexo常用命令详解</a></div>
+      
+    </li>
+  
+  </ul>
+
+        
+      
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.png" alt="彭真进 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.png" alt="彭真进 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>彭真进</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/" title="Hexo搭建个人博客（三）：主题美化">http://pengzhenjin.top/2018/08/17/Hexo搭建个人博客（三）：主题美化/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+            
+              <a href="/tags/博客/" rel="tag"><i class="fa fa-tag"></i> 博客</a>
+            
+              <a href="/tags/NexT/" rel="tag"><i class="fa fa-tag"></i> NexT</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2018/08/16/Hexo搭建个人博客（二）：主题配置/" rel="next" title="Hexo搭建个人博客（二）：主题配置">
+                  <i class="fa fa-chevron-left"></i> Hexo搭建个人博客（二）：主题配置
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2018/08/20/Hexo常用命令详解/" rel="prev" title="Hexo常用命令详解">
+                  Hexo常用命令详解 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc">
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定样式"><span class="nav-number">1.</span> <span class="nav-text">自定样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置-RSS"><span class="nav-number">2.</span> <span class="nav-text">设置 RSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加「分类」页面"><span class="nav-number">3.</span> <span class="nav-text">添加「分类」页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加「标签」页面"><span class="nav-number">4.</span> <span class="nav-text">添加「标签」页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加「关于」页面"><span class="nav-number">5.</span> <span class="nav-text">添加「关于」页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置代码块样式"><span class="nav-number">6.</span> <span class="nav-text">设置代码块样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置阅读进度条样式"><span class="nav-number">7.</span> <span class="nav-text">设置阅读进度条样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置书签"><span class="nav-number">8.</span> <span class="nav-text">设置书签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置社交链接"><span class="nav-number">9.</span> <span class="nav-text">设置社交链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置友情链接"><span class="nav-number">10.</span> <span class="nav-text">设置友情链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章目录"><span class="nav-number">11.</span> <span class="nav-text">设置文章目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置回到顶部按钮"><span class="nav-number">12.</span> <span class="nav-text">设置回到顶部按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置站点建立时间"><span class="nav-number">13.</span> <span class="nav-text">设置站点建立时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置站点底部图标"><span class="nav-number">14.</span> <span class="nav-text">设置站点底部图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置站点底部版权声明"><span class="nav-number">15.</span> <span class="nav-text">设置站点底部版权声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置站点底部平台信息"><span class="nav-number">16.</span> <span class="nav-text">设置站点底部平台信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置站点底部备案信息"><span class="nav-number">17.</span> <span class="nav-text">设置站点底部备案信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章摘要"><span class="nav-number">18.</span> <span class="nav-text">设置文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章-Meta"><span class="nav-number">19.</span> <span class="nav-text">设置文章 Meta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章字数统计和阅读时长"><span class="nav-number">20.</span> <span class="nav-text">设置文章字数统计和阅读时长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章底部标签图标"><span class="nav-number">21.</span> <span class="nav-text">设置文章底部标签图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章微信订阅"><span class="nav-number">22.</span> <span class="nav-text">设置文章微信订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置打赏功能"><span class="nav-number">23.</span> <span class="nav-text">设置打赏功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置相关文章功能"><span class="nav-number">24.</span> <span class="nav-text">设置相关文章功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加本地搜索"><span class="nav-number">25.</span> <span class="nav-text">添加本地搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置Gitalk评论系统"><span class="nav-number">26.</span> <span class="nav-text">设置Gitalk评论系统</span></a></li></ol></div>
+          </div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="彭真进">
+  <p class="site-author-name" itemprop="name">彭真进</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/pengzhenjin" title="GitHub &rarr; https://github.com/pengzhenjin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:562260994@qq.com" title="E-Mail &rarr; mailto:562260994@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn" title="https://hexo.io/zh-cn" rel="noopener" target="_blank">Hexo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/docs" title="https://theme-next.org/docs" rel="noopener" target="_blank">NexT</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭真进 版权所有</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">18k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">16 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/post-details.js?v=7.3.0"></script>
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2e07c2563cfbca1908e8',
+      clientSecret: 'e7669e875bc3881cb2c3fea6ce057d03fd7afc5a',
+      repo: 'pengzhenjin.github.io',
+      owner: 'pengzhenjin',
+      admin: ['pengzhenjin'],
+      id: 'c291b75aa0c4e018b84548e42b3a71aa',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
