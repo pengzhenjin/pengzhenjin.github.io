@@ -76,9 +76,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
-    
       <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
@@ -100,9 +100,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
-    
       <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
@@ -124,9 +124,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
-    
       <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
@@ -175,9 +175,11 @@
     <link href="http://pengzhenjin.top/2018/06/10/Git%EF%BC%9A%E5%B7%A5%E5%85%B7/"/>
     <id>http://pengzhenjin.top/2018/06/10/Git：工具/</id>
     <published>2018-06-09T16:00:00.000Z</published>
-    <updated>2019-08-25T14:47:16.795Z</updated>
+    <updated>2019-08-29T10:52:06.577Z</updated>
     
     <summary type="html">
+    
+      &lt;p&gt;现在，你已经学习了管理或者维护 Git 仓库、实现代码控制所需的大多数日常命令和工作流程。 你已经尝试了跟踪和提交文件的基本操作，并且发挥了暂存区和轻量级的分支及合并的威力。&lt;/p&gt;&lt;p&gt;接下来你将学习一些 Git 的强大功能，这些功能你可能并不会在日常操作中使用，但在某些时候你可能会需要。&lt;/p&gt;&lt;h3 id=&quot;选择修订版本&quot;&gt;&lt;a href=&quot;#选择修订版本&quot; class=&quot;headerlink&quot; title=&quot;选择修订版本&quot;&gt;&lt;/a&gt;选择修订版本&lt;/h3&gt;&lt;p&gt;Git 允许你通过几种方法来指明特定的或者一定范围内的提交。 了解它们并不是必需的，但是了解一下总没坏处。&lt;/p&gt;
     
     </summary>
     
@@ -193,9 +195,11 @@
     <link href="http://pengzhenjin.top/2018/06/09/Git%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     <id>http://pengzhenjin.top/2018/06/09/Git：分布式/</id>
     <published>2018-06-08T16:00:00.000Z</published>
-    <updated>2019-08-25T14:46:58.258Z</updated>
+    <updated>2019-08-29T02:13:44.180Z</updated>
     
     <summary type="html">
+    
+      &lt;p&gt;你现在拥有了一个远程 Git 版本库，能为所有开发者共享代码提供服务，在一个本地工作流程下，你也已经熟悉了基本 Git 命令。你现在可以学习如何利用 Git 提供的一些分布式工作流程了。&lt;/p&gt;&lt;p&gt;这一章中，你将会学习如何作为贡献者或整合者，在一个分布式协作的环境中使用 Git。 你会学习为一个项目成功地贡献代码，并接触一些最佳实践方式，让你和项目的维护者能轻松地完成这个过程。另外，你也会学到如何管理有很多开发者提交贡献的项目。&lt;/p&gt;
     
     </summary>
     
@@ -211,9 +215,11 @@
     <link href="http://pengzhenjin.top/2018/06/08/Git%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://pengzhenjin.top/2018/06/08/Git：服务器/</id>
     <published>2018-06-07T16:00:00.000Z</published>
-    <updated>2019-08-25T14:48:05.666Z</updated>
+    <updated>2019-08-28T14:17:00.841Z</updated>
     
     <summary type="html">
+    
+      &lt;p&gt;到目前为止，你应该已经有办法使用 Git 来完成日常工作。 然而，为了使用 Git 协作功能，你还需要有远程的 Git 仓库。 尽管在技术上你可以从个人仓库进行推送（push）和拉取（pull）来修改内容，但不鼓励使用这种方法，因为一不留心就很容易弄混其他人的进度。 此外，你希望你的合作者们即使在你的电脑未联机时亦能存取仓库 — 拥有一个更可靠的公用仓库十分有用。 因此，与他人合作的最佳方法即是建立一个你与合作者们都有权利访问，且可从那里推送和拉取资料的共用仓库。&lt;/p&gt;
     
     </summary>
     
