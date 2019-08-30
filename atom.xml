@@ -157,9 +157,17 @@
     <link href="http://pengzhenjin.top/2018/06/11/Git%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
     <id>http://pengzhenjin.top/2018/06/11/Git：自定义/</id>
     <published>2018-06-10T16:00:00.000Z</published>
-    <updated>2019-08-25T14:47:35.746Z</updated>
+    <updated>2019-08-30T05:13:04.661Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;到目前为止，我们已经阐述了 Git 基本的运作机制和使用方式，介绍了许多 Git 提供的工具来帮助你简单且有效地使用它。 在本章，我们将演示如何借助 Git 的一些重要的配置方法和钩子机制，来满足自定义的需求。
+        
+      
     
     </summary>
     
