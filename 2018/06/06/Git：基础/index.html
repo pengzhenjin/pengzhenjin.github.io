@@ -65,13 +65,13 @@
 <meta property="og:site_name" content="彭真进的博客">
 <meta property="og:description" content="安装 Git在你开始使用 Git 前，需要将它安装在你的计算机上。 即便已经安装，最好将它升级到最新的版本。 你可以通过软件包或者其它安装程序来安装，或者下载源码编译安装。在 Linux 上安装如果你想在 Linux 上用二进制安装程序来安装 Git，可以使用发行版包含的基础软件包管理工具来安装。 如果以 Fedora 上为例，你可以使用 yum：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pengzhenjin.top/2018/06/06/Git：基础/git-chapter1-img1.png">
-<meta property="og:image" content="http://pengzhenjin.top/2018/06/06/Git：基础/git-chapter1-img2.png">
-<meta property="og:updated_time" content="2019-08-28T01:42:37.414Z">
+<meta property="og:image" content="http://pengzhenjin.top/2018/06/06/Git：基础/git-chapter-1/img1.png">
+<meta property="og:image" content="http://pengzhenjin.top/2018/06/06/Git：基础/git-chapter-5/img1.png">
+<meta property="og:updated_time" content="2019-08-31T02:48:41.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git：基础">
 <meta name="twitter:description" content="安装 Git在你开始使用 Git 前，需要将它安装在你的计算机上。 即便已经安装，最好将它升级到最新的版本。 你可以通过软件包或者其它安装程序来安装，或者下载源码编译安装。在 Linux 上安装如果你想在 Linux 上用二进制安装程序来安装 Git，可以使用发行版包含的基础软件包管理工具来安装。 如果以 Fedora 上为例，你可以使用 yum：">
-<meta name="twitter:image" content="http://pengzhenjin.top/2018/06/06/Git：基础/git-chapter1-img1.png">
+<meta name="twitter:image" content="http://pengzhenjin.top/2018/06/06/Git：基础/git-chapter-1/img1.png">
   <link rel="canonical" href="http://pengzhenjin.top/2018/06/06/Git：基础/">
 
 
@@ -354,7 +354,7 @@
 <p>要了解更多选择，Git 官方网站上有在各种 Unix 风格的系统上安装步骤，网址为 <a href="https://git-scm.com/download/linux" target="_blank" rel="noopener">https://git-scm.com/download/linux</a>。</p>
 <h4 id="在-Mac-上安装"><a href="#在-Mac-上安装" class="headerlink" title="在 Mac 上安装"></a>在 Mac 上安装</h4><p>在 Mac 上安装 Git 有多种方式。 最简单的方法是安装 Xcode Command Line Tools。 Mavericks （10.9） 或更高版本的系统中，在 Terminal 里尝试首次运行 git 命令即可。 如果没有安装过命令行开发者工具，将会提示你安装。</p>
 <p>如果你想安装更新的版本，可以使用二进制安装程序。 官方维护的 OSX Git 安装程序可以在 Git 官方网站下载，网址为 <a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">https://git-scm.com/download/mac</a>。</p>
-<p><img src="git-chapter1-img1.png" alt></p>
+<p><img src="git-chapter-1/img1.png" alt></p>
 <p>Figure 7. Git OS X 安装程序.<br>你也可以将它作为 GitHub for Mac 的一部分来安装。 它们的图形化 Git 工具有一个安装命令行工具的选项。 你可以从 GitHub for Mac 网站下载该工具，网址为 <a href="http://mac.github.com" target="_blank" rel="noopener">http://mac.github.com</a>。</p>
 <h4 id="在-Windows-上安装"><a href="#在-Windows-上安装" class="headerlink" title="在 Windows 上安装"></a>在 Windows 上安装</h4><p>在 Windows 上安装 Git 也有几种安装方法。 官方版本可以在 Git 官方网站下载。 打开 <a href="http://git-scm.com/download/win" target="_blank" rel="noopener">http://git-scm.com/download/win</a>，下载会自动开始。 要注意这是一个名为 Git for Windows 的项目（也叫做 msysGit），和 Git 是分别独立的项目；更多信息请访问 <a href="http://gitforwindows.org" target="_blank" rel="noopener">http://gitforwindows.org</a>。</p>
 <p>另一个简单的方法是安装 GitHub for Windows。 该安装程序包含图形化和命令行版本的 Git。 它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。 稍后我们会对这方面有更多了解，现在只要一句话就够了，这些都是你所需要的。 你可以在 GitHub for Windows 网站下载，网址为 <a href="http://windows.github.com" target="_blank" rel="noopener">http://windows.github.com</a>。</p>
@@ -423,7 +423,7 @@
 <p>Git 支持多种数据传输协议。 上面的例子使用的是 <code>https://</code> 协议，不过你也可以使用 <code>git://</code> 协议或者使用 SSH 传输协议，比如 <code>user@server:path/to/repo.git</code> 。 <a href="http://pengzhenjin.top/2018/06/08/Git：服务器">在服务器上搭建 Git</a> 将会介绍所有这些协议在服务器端如何配置使用，以及各种方式之间的利弊。</p>
 <h3 id="记录每次更新到仓库"><a href="#记录每次更新到仓库" class="headerlink" title="记录每次更新到仓库"></a>记录每次更新到仓库</h3><p>现在我们手上有了一个真实项目的 Git 仓库，并从这个仓库中取出了所有文件的工作拷贝。 接下来，对这些文件做些修改，在完成了一个阶段的目标之后，提交本次更新到仓库。</p>
 <p>请记住，你工作目录下的每一个文件都不外乎这两种状态：已跟踪或未跟踪。 已跟踪的文件是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能处于未修改，已修改或已放入暂存区。 工作目录中除已跟踪文件以外的所有其它文件都属于未跟踪文件，它们既不存在于上次快照的记录中，也没有放入暂存区。 初次克隆某个仓库的时候，工作目录中的所有文件都属于已跟踪文件，并处于未修改状态。</p>
-<p>编辑过某些文件之后，由于自上次提交后你对它们做了修改，Git 将它们标记为已修改文件。 我们逐步将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。所以使用 Git 时文件的生命周期如下：<br><img src="git-chapter1-img2.png" alt><br>Figure 8. 文件的状态变化周期</p>
+<p>编辑过某些文件之后，由于自上次提交后你对它们做了修改，Git 将它们标记为已修改文件。 我们逐步将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。所以使用 Git 时文件的生命周期如下：<br><img src="git-chapter-5/img1.png" alt><br>Figure 8. 文件的状态变化周期</p>
 <h4 id="检查当前文件状态"><a href="#检查当前文件状态" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h4><p>要查看哪些文件处于什么状态，可以用 <code>git status</code> 命令。 如果在克隆仓库后立即使用此命令，会看到类似这样的输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
 
@@ -756,20 +756,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2018\06\12\Git：内部原理\" rel="bookmark">Git：内部原理</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="\2018\06\11\Git：自定义\" rel="bookmark">Git：自定义</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="\2018\06\08\Git：服务器\" rel="bookmark">Git：服务器</a></div>
       
     </li>
@@ -785,6 +771,20 @@
       
       
       <div class="popular-posts-title"><a href="\2018\06\09\Git：分布式\" rel="bookmark">Git：分布式</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2018\06\11\Git：自定义\" rel="bookmark">Git：自定义</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2018\06\12\Git：内部原理\" rel="bookmark">Git：内部原理</a></div>
       
     </li>
   
@@ -1050,14 +1050,14 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">3:16</span>
+    <span title="站点阅读时长">4:27</span>
 </div>
 
         

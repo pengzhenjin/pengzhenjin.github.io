@@ -137,7 +137,7 @@
     <link href="http://pengzhenjin.top/2018/06/12/Git%EF%BC%9A%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86/"/>
     <id>http://pengzhenjin.top/2018/06/12/Git：内部原理/</id>
     <published>2018-06-11T16:00:00.000Z</published>
-    <updated>2019-08-27T01:44:52.680Z</updated>
+    <updated>2019-08-31T02:44:25.650Z</updated>
     
     <summary type="html">
     
@@ -157,17 +157,11 @@
     <link href="http://pengzhenjin.top/2018/06/11/Git%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
     <id>http://pengzhenjin.top/2018/06/11/Git：自定义/</id>
     <published>2018-06-10T16:00:00.000Z</published>
-    <updated>2019-08-30T05:13:04.661Z</updated>
+    <updated>2019-08-30T10:57:39.074Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;到目前为止，我们已经阐述了 Git 基本的运作机制和使用方式，介绍了许多 Git 提供的工具来帮助你简单且有效地使用它。 在本章，我们将演示如何借助 Git 的一些重要的配置方法和钩子机制，来满足自定义的需求。
-        
-      
+      &lt;h3 id=&quot;配置-Git&quot;&gt;&lt;a href=&quot;#配置-Git&quot; class=&quot;headerlink&quot; title=&quot;配置 Git&quot;&gt;&lt;/a&gt;配置 Git&lt;/h3&gt;&lt;p&gt;到目前为止，我们已经阐述了 Git 基本的运作机制和使用方式，介绍了许多 Git 提供的工具来帮助你简单且有效地使用它。 在本章，我们将演示如何借助 Git 的一些重要的配置方法和钩子机制，来满足自定义的需求。 通过这些工具，它会和你、你的公司或你的团队配合得天衣无缝。&lt;/p&gt;&lt;p&gt;你在 Git 基础 中看到，可以用 git config 配置 Git。 首先要做的事情就是设置你的名字和邮件地址：&lt;/p&gt;
     
     </summary>
     
@@ -263,7 +257,7 @@
     <link href="http://pengzhenjin.top/2018/06/06/Git%EF%BC%9A%E5%9F%BA%E7%A1%80/"/>
     <id>http://pengzhenjin.top/2018/06/06/Git：基础/</id>
     <published>2018-06-05T16:00:00.000Z</published>
-    <updated>2019-08-28T01:42:37.414Z</updated>
+    <updated>2019-08-31T02:48:41.100Z</updated>
     
     <summary type="html">
     
