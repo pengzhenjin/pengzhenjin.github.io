@@ -9,13 +9,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -29,7 +29,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '7.3.0',
+    version: '7.4.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":null},
@@ -53,7 +53,8 @@
       copy_button: '复制',
       copy_success: '复制成功',
       copy_failure: '复制失败'
-    }
+    },
+    sidebarPadding: 40
   };
 </script>
 
@@ -125,7 +126,6 @@
 </script>
 
   <title>Git：分支 | 彭真进的博客</title>
-  <meta name="generator" content="Hexo 3.9.0">
   
 
 
@@ -146,7 +146,6 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -176,7 +175,7 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
     <div>
@@ -271,7 +270,7 @@
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
-  <div class="search-input-wrapper">
+  <div class="search-input-container">
     <input autocomplete="off" autocorrect="off" autocapitalize="none"
            placeholder="搜索..." spellcheck="false"
            type="text" id="search-input">
@@ -289,22 +288,27 @@
 </div>
     </header>
 
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
             
 
-          <div id="content" class="content page-post-detail">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-
-  <article class="post" itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2018/06/07/Git：分支/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -835,7 +839,7 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
         
         
@@ -844,31 +848,28 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
+        <li class="sidebar-nav-toc">
           文章目录
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+        <li class="sidebar-nav-overview">
           站点概览
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc">
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支简介"><span class="nav-number">1.</span> <span class="nav-text">分支简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支创建"><span class="nav-number">1.1.</span> <span class="nav-text">分支创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支切换"><span class="nav-number">1.2.</span> <span class="nav-text">分支切换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的新建与合并"><span class="nav-number">2.</span> <span class="nav-text">分支的新建与合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建分支"><span class="nav-number">2.1.</span> <span class="nav-text">新建分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支的合并"><span class="nav-number">2.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到冲突时的分支合并"><span class="nav-number">2.3.</span> <span class="nav-text">遇到冲突时的分支合并</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">3.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支开发工作流"><span class="nav-number">4.</span> <span class="nav-text">分支开发工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#长期分支"><span class="nav-number">4.1.</span> <span class="nav-text">长期分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特性分支"><span class="nav-number">4.2.</span> <span class="nav-text">特性分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程分支"><span class="nav-number">5.</span> <span class="nav-text">远程分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推送"><span class="nav-number">5.1.</span> <span class="nav-text">推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跟踪分支"><span class="nav-number">5.2.</span> <span class="nav-text">跟踪分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拉取"><span class="nav-number">5.3.</span> <span class="nav-text">拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除远程分支"><span class="nav-number">5.4.</span> <span class="nav-text">删除远程分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变基"><span class="nav-number">6.</span> <span class="nav-text">变基</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变基的基本操作"><span class="nav-number">6.1.</span> <span class="nav-text">变基的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更有趣的变基例子"><span class="nav-number">6.2.</span> <span class="nav-text">更有趣的变基例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变基的风险"><span class="nav-number">6.3.</span> <span class="nav-text">变基的风险</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用变基解决变基"><span class="nav-number">6.4.</span> <span class="nav-text">用变基解决变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变基-vs-合并"><span class="nav-number">6.5.</span> <span class="nav-text">变基 vs. 合并</span></a></li></ol></li></ol></div>
-          </div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支简介"><span class="nav-number">1.</span> <span class="nav-text">分支简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支创建"><span class="nav-number">1.1.</span> <span class="nav-text">分支创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支切换"><span class="nav-number">1.2.</span> <span class="nav-text">分支切换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的新建与合并"><span class="nav-number">2.</span> <span class="nav-text">分支的新建与合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建分支"><span class="nav-number">2.1.</span> <span class="nav-text">新建分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支的合并"><span class="nav-number">2.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到冲突时的分支合并"><span class="nav-number">2.3.</span> <span class="nav-text">遇到冲突时的分支合并</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">3.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支开发工作流"><span class="nav-number">4.</span> <span class="nav-text">分支开发工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#长期分支"><span class="nav-number">4.1.</span> <span class="nav-text">长期分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特性分支"><span class="nav-number">4.2.</span> <span class="nav-text">特性分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程分支"><span class="nav-number">5.</span> <span class="nav-text">远程分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推送"><span class="nav-number">5.1.</span> <span class="nav-text">推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跟踪分支"><span class="nav-number">5.2.</span> <span class="nav-text">跟踪分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拉取"><span class="nav-number">5.3.</span> <span class="nav-text">拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除远程分支"><span class="nav-number">5.4.</span> <span class="nav-text">删除远程分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变基"><span class="nav-number">6.</span> <span class="nav-text">变基</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变基的基本操作"><span class="nav-number">6.1.</span> <span class="nav-text">变基的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更有趣的变基例子"><span class="nav-number">6.2.</span> <span class="nav-text">更有趣的变基例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变基的风险"><span class="nav-number">6.3.</span> <span class="nav-text">变基的风险</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用变基解决变基"><span class="nav-number">6.4.</span> <span class="nav-text">用变基解决变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变基-vs-合并"><span class="nav-number">6.5.</span> <span class="nav-text">变基 vs. 合并</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
       src="/images/avatar.png"
       alt="彭真进">
   <p class="site-author-name" itemprop="name">彭真进</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
@@ -888,16 +889,6 @@
             <a href="/categories/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
         </a>
@@ -909,28 +900,6 @@
         
           
             <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
           
         
         <span class="site-state-item-count">10</span>
@@ -982,7 +951,6 @@
     </ul>
   </div>
 
-        </div>
       </div>
 
     </div>
@@ -1032,64 +1000,55 @@
         
       </div>
     </footer>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
   </div>
 
   
+
+
     
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
   
 
-  
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
+  
 
   
-  <script src="/js/post-details.js?v=7.3.0"></script>
-
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 
