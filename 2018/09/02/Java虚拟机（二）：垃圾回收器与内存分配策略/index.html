@@ -61,26 +61,26 @@
 <meta name="keywords" content="java,jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟机（二）：垃圾回收器与内存分配策略">
-<meta property="og:url" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/index.html">
+<meta property="og:url" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/index.html">
 <meta property="og:site_name" content="彭真进的博客">
 <meta property="og:description" content="概述垃圾收集 Garbage Collection 通常被称为“GC”，它诞生于1960年 MIT 的 Lisp 语言，经过半个多世纪，目前已经十分成熟了。 jvm 中，程序计数器、虚拟机栈、本地方法栈都是随线程而生随线程而灭，栈帧随着方法的进入和退出做入栈和出栈操作，实现了自动的内存清理，因此，我们的内存垃圾回收主要集中于 java 堆和方法区中，在程序运行期间，这部分内存的分配和使用都是动态的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img1.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img2.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img3.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img4.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img5.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img6.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img7.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img8.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img9.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img10.jpg">
-<meta property="og:updated_time" content="2019-09-01T09:22:55.289Z">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img1.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img2.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img3.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img4.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img5.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img6.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img7.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img8.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img9.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img10.jpg">
+<meta property="og:updated_time" content="2019-09-02T02:02:08.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机（二）：垃圾回收器与内存分配策略">
 <meta name="twitter:description" content="概述垃圾收集 Garbage Collection 通常被称为“GC”，它诞生于1960年 MIT 的 Lisp 语言，经过半个多世纪，目前已经十分成熟了。 jvm 中，程序计数器、虚拟机栈、本地方法栈都是随线程而生随线程而灭，栈帧随着方法的进入和退出做入栈和出栈操作，实现了自动的内存清理，因此，我们的内存垃圾回收主要集中于 java 堆和方法区中，在程序运行期间，这部分内存的分配和使用都是动态的">
-<meta name="twitter:image" content="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img1.jpg">
-  <link rel="canonical" href="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/">
+<meta name="twitter:image" content="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/jvm-chapter-2/img1.jpg">
+  <link rel="canonical" href="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/">
 
 
 <script id="page-configurations">
@@ -275,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭真进">
@@ -303,7 +303,7 @@
                 
               
 
-              <time title="创建时间：2019-09-02 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-02T00:00:00+08:00">2019-09-02</time>
+              <time title="创建时间：2018-09-02 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-02T00:00:00+08:00">2018-09-02</time>
             </span>
           
             <span class="post-meta-item">
@@ -446,21 +446,21 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\03\Java虚拟机（三）：Java内存模型与线程\" rel="bookmark">Java虚拟机（三）：Java内存模型与线程</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\01\Java虚拟机（一）：Java内存区域与内存溢出异常\" rel="bookmark">Java虚拟机（一）：Java内存区域与内存溢出异常</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\01\Java虚拟机（一）：Java内存区域与内存溢出异常\" rel="bookmark">Java虚拟机（一）：Java内存区域与内存溢出异常</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\03\Java虚拟机（三）：Java内存模型与线程\" rel="bookmark">Java虚拟机（三）：Java内存模型与线程</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\04\Java虚拟机（四）：虚拟机类加载机制\" rel="bookmark">Java虚拟机（四）：虚拟机类加载机制</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\04\Java虚拟机（四）：虚拟机类加载机制\" rel="bookmark">Java虚拟机（四）：虚拟机类加载机制</a></div>
       
     </li>
   
@@ -499,7 +499,7 @@
     <strong>本文作者： </strong>彭真进</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/" title="Java虚拟机（二）：垃圾回收器与内存分配策略">http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/</a>
+    <a href="http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/" title="Java虚拟机（二）：垃圾回收器与内存分配策略">http://pengzhenjin.top/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -526,7 +526,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/01/Java虚拟机（一）：Java内存区域与内存溢出异常/" rel="next" title="Java虚拟机（一）：Java内存区域与内存溢出异常">
+                <a href="/2018/09/01/Java虚拟机（一）：Java内存区域与内存溢出异常/" rel="next" title="Java虚拟机（一）：Java内存区域与内存溢出异常">
                   <i class="fa fa-chevron-left"></i> Java虚拟机（一）：Java内存区域与内存溢出异常
                 </a>
               
@@ -536,7 +536,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/03/Java虚拟机（三）：Java内存模型与线程/" rel="prev" title="Java虚拟机（三）：Java内存模型与线程">
+                <a href="/2018/09/03/Java虚拟机（三）：Java内存模型与线程/" rel="prev" title="Java虚拟机（三）：Java内存模型与线程">
                   Java虚拟机（三）：Java内存模型与线程 <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -833,7 +833,7 @@
       repo: 'pengzhenjin.github.io',
       owner: 'pengzhenjin',
       admin: ['pengzhenjin'],
-      id: 'd53f2d38c6c739538275c2098af3288e',
+      id: 'ce11545df1b23dad7c0d544082293b81',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'

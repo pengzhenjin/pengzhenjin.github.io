@@ -61,22 +61,22 @@
 <meta name="keywords" content="java,jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟机（三）：Java内存模型与线程">
-<meta property="og:url" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/index.html">
+<meta property="og:url" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/index.html">
 <meta property="og:site_name" content="彭真进的博客">
 <meta property="og:description" content="Java 内存模型屏蔽掉各种硬件和操作系统的内存访问差异。主内存和工作内存之间的交互   操作 作用对象 解释    lock 主内存 把一个变量标识为一条线程独占的状态   unlock 主内存 把一个处于锁定状态的变量释放出来，释放后才可被其他线程锁定   read 主内存 把一个变量的值从主内存传输到线程工作内存中，以便 load 操作使用   load 工作内存 把 read 操作从主内存">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img1.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img2.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img3.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img4.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img5.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img6.jpg">
-<meta property="og:updated_time" content="2019-09-01T09:56:11.008Z">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img1.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img2.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img3.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img4.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img5.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img6.jpg">
+<meta property="og:updated_time" content="2019-09-02T02:01:59.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机（三）：Java内存模型与线程">
 <meta name="twitter:description" content="Java 内存模型屏蔽掉各种硬件和操作系统的内存访问差异。主内存和工作内存之间的交互   操作 作用对象 解释    lock 主内存 把一个变量标识为一条线程独占的状态   unlock 主内存 把一个处于锁定状态的变量释放出来，释放后才可被其他线程锁定   read 主内存 把一个变量的值从主内存传输到线程工作内存中，以便 load 操作使用   load 工作内存 把 read 操作从主内存">
-<meta name="twitter:image" content="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img1.jpg">
-  <link rel="canonical" href="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/">
+<meta name="twitter:image" content="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/jvm-chapter-3/img1.jpg">
+  <link rel="canonical" href="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/">
 
 
 <script id="page-configurations">
@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭真进">
@@ -299,7 +299,7 @@
                 
               
 
-              <time title="创建时间：2019-09-03 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-03T00:00:00+08:00">2019-09-03</time>
+              <time title="创建时间：2018-09-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-03T00:00:00+08:00">2018-09-03</time>
             </span>
           
             <span class="post-meta-item">
@@ -481,21 +481,21 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\01\Java虚拟机（一）：Java内存区域与内存溢出异常\" rel="bookmark">Java虚拟机（一）：Java内存区域与内存溢出异常</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\01\Java虚拟机（一）：Java内存区域与内存溢出异常\" rel="bookmark">Java虚拟机（一）：Java内存区域与内存溢出异常</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\02\Java虚拟机（二）：垃圾回收器与内存分配策略\" rel="bookmark">Java虚拟机（二）：垃圾回收器与内存分配策略</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\02\Java虚拟机（二）：垃圾回收器与内存分配策略\" rel="bookmark">Java虚拟机（二）：垃圾回收器与内存分配策略</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\04\Java虚拟机（四）：虚拟机类加载机制\" rel="bookmark">Java虚拟机（四）：虚拟机类加载机制</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\04\Java虚拟机（四）：虚拟机类加载机制\" rel="bookmark">Java虚拟机（四）：虚拟机类加载机制</a></div>
       
     </li>
   
@@ -534,7 +534,7 @@
     <strong>本文作者： </strong>彭真进</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/" title="Java虚拟机（三）：Java内存模型与线程">http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/</a>
+    <a href="http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/" title="Java虚拟机（三）：Java内存模型与线程">http://pengzhenjin.top/2018/09/03/Java虚拟机（三）：Java内存模型与线程/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -561,7 +561,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/" rel="next" title="Java虚拟机（二）：垃圾回收器与内存分配策略">
+                <a href="/2018/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/" rel="next" title="Java虚拟机（二）：垃圾回收器与内存分配策略">
                   <i class="fa fa-chevron-left"></i> Java虚拟机（二）：垃圾回收器与内存分配策略
                 </a>
               
@@ -571,7 +571,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/" rel="prev" title="Java虚拟机（四）：虚拟机类加载机制">
+                <a href="/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/" rel="prev" title="Java虚拟机（四）：虚拟机类加载机制">
                   Java虚拟机（四）：虚拟机类加载机制 <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -868,7 +868,7 @@
       repo: 'pengzhenjin.github.io',
       owner: 'pengzhenjin',
       admin: ['pengzhenjin'],
-      id: 'c692070197602283f9becdcbc20d03c9',
+      id: 'f09e87a00d60dc737ce0d99e855f395c',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'

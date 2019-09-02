@@ -61,18 +61,18 @@
 <meta name="keywords" content="java,jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟机（四）：虚拟机类加载机制">
-<meta property="og:url" content="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/index.html">
+<meta property="og:url" content="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/index.html">
 <meta property="og:site_name" content="彭真进的博客">
 <meta property="og:description" content="虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验、装换解析和初始化，最终形成可以被虚拟机直接使用的 Java 类型。在 Java 语言中，类型的加载、连接和初始化过程都是在程序运行期间完成的。类加载时机其中加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的。解析阶段可以在初始化之后再开始(运行时绑定或动态绑定或晚期绑定)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/jvm-chapter-4/img1.jpg">
-<meta property="og:image" content="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/jvm-chapter-4/img2.jpg">
-<meta property="og:updated_time" content="2019-09-02T01:58:08.780Z">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/jvm-chapter-4/img1.jpg">
+<meta property="og:image" content="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/jvm-chapter-4/img2.jpg">
+<meta property="og:updated_time" content="2019-09-02T02:01:51.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机（四）：虚拟机类加载机制">
 <meta name="twitter:description" content="虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验、装换解析和初始化，最终形成可以被虚拟机直接使用的 Java 类型。在 Java 语言中，类型的加载、连接和初始化过程都是在程序运行期间完成的。类加载时机其中加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的。解析阶段可以在初始化之后再开始(运行时绑定或动态绑定或晚期绑定)。">
-<meta name="twitter:image" content="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/jvm-chapter-4/img1.jpg">
-  <link rel="canonical" href="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/">
+<meta name="twitter:image" content="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/jvm-chapter-4/img1.jpg">
+  <link rel="canonical" href="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/">
 
 
 <script id="page-configurations">
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭真进">
@@ -295,7 +295,7 @@
                 
               
 
-              <time title="创建时间：2019-09-04 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-04T00:00:00+08:00">2019-09-04</time>
+              <time title="创建时间：2018-09-04 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-04T00:00:00+08:00">2018-09-04</time>
             </span>
           
             <span class="post-meta-item">
@@ -491,21 +491,21 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\03\Java虚拟机（三）：Java内存模型与线程\" rel="bookmark">Java虚拟机（三）：Java内存模型与线程</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\01\Java虚拟机（一）：Java内存区域与内存溢出异常\" rel="bookmark">Java虚拟机（一）：Java内存区域与内存溢出异常</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\01\Java虚拟机（一）：Java内存区域与内存溢出异常\" rel="bookmark">Java虚拟机（一）：Java内存区域与内存溢出异常</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\03\Java虚拟机（三）：Java内存模型与线程\" rel="bookmark">Java虚拟机（三）：Java内存模型与线程</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2019\09\02\Java虚拟机（二）：垃圾回收器与内存分配策略\" rel="bookmark">Java虚拟机（二）：垃圾回收器与内存分配策略</a></div>
+      <div class="popular-posts-title"><a href="\2018\09\02\Java虚拟机（二）：垃圾回收器与内存分配策略\" rel="bookmark">Java虚拟机（二）：垃圾回收器与内存分配策略</a></div>
       
     </li>
   
@@ -544,7 +544,7 @@
     <strong>本文作者： </strong>彭真进</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/" title="Java虚拟机（四）：虚拟机类加载机制">http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/</a>
+    <a href="http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/" title="Java虚拟机（四）：虚拟机类加载机制">http://pengzhenjin.top/2018/09/04/Java虚拟机（四）：虚拟机类加载机制/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -571,7 +571,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/03/Java虚拟机（三）：Java内存模型与线程/" rel="next" title="Java虚拟机（三）：Java内存模型与线程">
+                <a href="/2018/09/03/Java虚拟机（三）：Java内存模型与线程/" rel="next" title="Java虚拟机（三）：Java内存模型与线程">
                   <i class="fa fa-chevron-left"></i> Java虚拟机（三）：Java内存模型与线程
                 </a>
               
@@ -580,6 +580,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/08/23/网站导航/" rel="prev" title="网站导航">
+                  网站导航 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -874,7 +878,7 @@
       repo: 'pengzhenjin.github.io',
       owner: 'pengzhenjin',
       admin: ['pengzhenjin'],
-      id: '2b435455a8eec5cbee373bcfb8e9fefe',
+      id: 'd2596b69fb695afbf08cf933539b8e34',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'
