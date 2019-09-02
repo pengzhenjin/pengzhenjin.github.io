@@ -45,14 +45,14 @@
     <link href="http://pengzhenjin.top/2018/10/06/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/"/>
     <id>http://pengzhenjin.top/2018/10/06/Java多线程详解/</id>
     <published>2018-10-05T16:00:00.000Z</published>
-    <updated>2019-09-02T08:29:52.654Z</updated>
+    <updated>2019-09-02T09:59:57.227Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;线程对象是可以产生线程的对象。比如在 Java 平台中 Thread 对象 、Runnable 对象。线程，是指正在执行的一个指点令序列。在 Java 平台上是指从一个线程对象的 start() 方法开始，运行 run() 方法体中的那一段相对独立的过程。相比于多进程，多线程的优势有：&lt;/p&gt;&lt;ol&gt;
 &lt;li&gt;进程之间不能共享数据，线程可以；&lt;/li&gt;
 &lt;li&gt;系统创建进程需要为该进程重新分配系统资源，故创建线程代价比较小；&lt;/li&gt;
-&lt;li&gt;Java语言内置了多线程功能支持，简化了 Java 多线程编程。&lt;/li&gt;
+&lt;li&gt;Java 语言内置了多线程功能支持，简化了 Java 多线程编程。&lt;/li&gt;
 &lt;/ol&gt;
     
     </summary>
