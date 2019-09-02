@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://pengzhenjin.top/"/>
-  <updated>2019-08-31T03:52:48.913Z</updated>
+  <updated>2019-09-02T01:58:08.780Z</updated>
   <id>http://pengzhenjin.top/</id>
   
   <author>
@@ -15,6 +15,142 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java虚拟机（四）：虚拟机类加载机制</title>
+    <link href="http://pengzhenjin.top/2019/09/04/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>http://pengzhenjin.top/2019/09/04/Java虚拟机（四）：虚拟机类加载机制/</id>
+    <published>2019-09-03T16:00:00.000Z</published>
+    <updated>2019-09-02T01:58:08.780Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验、装换解析和初始化，最终形成可以被虚拟机直接使用的 Java 类型。&lt;/p&gt;&lt;p&gt;在 Java 语言中，类型的加载、连接和初始化过程都是在程序运行期间完成的。&lt;/p&gt;&lt;h3 id=&quot;类加载时机&quot;&gt;&lt;a href=&quot;#类加载时机&quot; class=&quot;headerlink&quot; title=&quot;类加载时机&quot;&gt;&lt;/a&gt;类加载时机&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;jvm-chapter-4/img1.jpg&quot; alt&gt;&lt;/p&gt;&lt;p&gt;其中加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的。解析阶段可以在初始化之后再开始(运行时绑定或动态绑定或晚期绑定)。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://pengzhenjin.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://pengzhenjin.top/tags/java/"/>
+    
+      <category term="jvm" scheme="http://pengzhenjin.top/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java虚拟机（三）：Java内存模型与线程</title>
+    <link href="http://pengzhenjin.top/2019/09/03/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9AJava%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://pengzhenjin.top/2019/09/03/Java虚拟机（三）：Java内存模型与线程/</id>
+    <published>2019-09-02T16:00:00.000Z</published>
+    <updated>2019-09-01T09:56:11.008Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;jvm-chapter-3/img1.jpg&quot; alt&gt;&lt;/p&gt;&lt;h3 id=&quot;Java-内存模型&quot;&gt;&lt;a href=&quot;#Java-内存模型&quot; class=&quot;headerlink&quot; title=&quot;Java 内存模型&quot;&gt;&lt;/a&gt;Java 内存模型&lt;/h3&gt;&lt;p&gt;屏蔽掉各种硬件和操作系统的内存访问差异。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;jvm-chapter-3/img2.jpg&quot; alt&gt;&lt;/p&gt;&lt;h4 id=&quot;主内存和工作内存之间的交互&quot;&gt;&lt;a href=&quot;#主内存和工作内存之间的交互&quot; class=&quot;headerlink&quot; title=&quot;主内存和工作内存之间的交互&quot;&gt;&lt;/a&gt;主内存和工作内存之间的交互&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;操作&lt;/th&gt;
+&lt;th&gt;作用对象&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;lock&lt;/td&gt;
+&lt;td&gt;主内存&lt;/td&gt;
+&lt;td&gt;把一个变量标识为一条线程独占的状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;unlock&lt;/td&gt;
+&lt;td&gt;主内存&lt;/td&gt;
+&lt;td&gt;把一个处于锁定状态的变量释放出来，释放后才可被其他线程锁定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;read&lt;/td&gt;
+&lt;td&gt;主内存&lt;/td&gt;
+&lt;td&gt;把一个变量的值从主内存传输到线程工作内存中，以便 load 操作使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;load&lt;/td&gt;
+&lt;td&gt;工作内存&lt;/td&gt;
+&lt;td&gt;把 read 操作从主内存中得到的变量值放入工作内存中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;use&lt;/td&gt;
+&lt;td&gt;工作内存&lt;/td&gt;
+&lt;td&gt;把工作内存中一个变量的值传递给执行引擎，每当虚拟机遇到一个需要使用到变量值的字节码指令时将会执行这个操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;assign&lt;/td&gt;
+&lt;td&gt;工作内存&lt;/td&gt;
+&lt;td&gt;把一个从执行引擎接收到的值赋接收到的值赋给工作内存的变量，每当虚拟机遇到一个给变量赋值的字节码指令时执行这个操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;store&lt;/td&gt;
+&lt;td&gt;工作内存&lt;/td&gt;
+&lt;td&gt;把工作内存中的一个变量的值传送到主内存中，以便 write 操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;write&lt;/td&gt;
+&lt;td&gt;工作内存&lt;/td&gt;
+&lt;td&gt;把 store 操作从工作内存中得到的变量的值放入主内存的变量中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://pengzhenjin.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://pengzhenjin.top/tags/java/"/>
+    
+      <category term="jvm" scheme="http://pengzhenjin.top/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java虚拟机（二）：垃圾回收器与内存分配策略</title>
+    <link href="http://pengzhenjin.top/2019/09/02/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/"/>
+    <id>http://pengzhenjin.top/2019/09/02/Java虚拟机（二）：垃圾回收器与内存分配策略/</id>
+    <published>2019-09-01T16:00:00.000Z</published>
+    <updated>2019-09-01T09:22:55.289Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;垃圾收集 Garbage Collection 通常被称为“GC”，它诞生于1960年 MIT 的 Lisp 语言，经过半个多世纪，目前已经十分成熟了。 jvm 中，程序计数器、虚拟机栈、本地方法栈都是随线程而生随线程而灭，栈帧随着方法的进入和退出做入栈和出栈操作，实现了自动的内存清理，因此，我们的内存垃圾回收主要集中于 java 堆和方法区中，在程序运行期间，这部分内存的分配和使用都是动态的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://pengzhenjin.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://pengzhenjin.top/tags/java/"/>
+    
+      <category term="jvm" scheme="http://pengzhenjin.top/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java虚拟机（一）：Java内存区域与内存溢出异常</title>
+    <link href="http://pengzhenjin.top/2019/09/01/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/"/>
+    <id>http://pengzhenjin.top/2019/09/01/Java虚拟机（一）：Java内存区域与内存溢出异常/</id>
+    <published>2019-08-31T16:00:00.000Z</published>
+    <updated>2019-09-01T08:32:39.365Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;进程和线程的区别&quot;&gt;&lt;a href=&quot;#进程和线程的区别&quot; class=&quot;headerlink&quot; title=&quot;进程和线程的区别&quot;&gt;&lt;/a&gt;进程和线程的区别&lt;/h3&gt;&lt;p&gt;进程是资源分配的最小单位，线程是程序执行的最小单位。&lt;/p&gt;&lt;p&gt;进程有自己的独立地址空间，每启动一个进程，系统就会为它分配一个地址空间、建立数据表来维护代码段、堆栈段和数据段，这种操作非常昂贵。而线程是共享进程中的数据的，使用相同的地址空间，因此 CPU 切换一个线程的花费要比进程小很多，同时创建一个线程的开销也要比进程小很多。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://pengzhenjin.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://pengzhenjin.top/tags/java/"/>
+    
+      <category term="jvm" scheme="http://pengzhenjin.top/tags/jvm/"/>
+    
+  </entry>
   
   <entry>
     <title>网站导航</title>
