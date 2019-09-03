@@ -65,6 +65,33 @@
   </entry>
   
   <entry>
+    <title>HashMap的实现原理</title>
+    <link href="http://pengzhenjin.top/2018/10/16/HashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>http://pengzhenjin.top/2018/10/16/HashMap的实现原理/</id>
+    <published>2018-10-15T16:00:00.000Z</published>
+    <updated>2019-09-03T06:45:36.292Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Java-中的-hashCode-和-equals&quot;&gt;&lt;a href=&quot;#Java-中的-hashCode-和-equals&quot; class=&quot;headerlink&quot; title=&quot;Java 中的 hashCode 和 equals&quot;&gt;&lt;/a&gt;Java 中的 hashCode 和 equals&lt;/h3&gt;&lt;h4 id=&quot;关于-hashCode&quot;&gt;&lt;a href=&quot;#关于-hashCode&quot; class=&quot;headerlink&quot; title=&quot;关于 hashCode&quot;&gt;&lt;/a&gt;关于 hashCode&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;hashCode 的存在主要是用于查找的快捷性，如 Hashtable，HashMap 等，hashCode 是用来在散列存储结构中确定对象的存储地址的。&lt;/li&gt;
+&lt;li&gt;如果两个对象相同，就是适用于 equals(java.lang.Object) 方法，那么这两个对象的 hashCode 一定要相同。&lt;/li&gt;
+&lt;li&gt;如果对象的 equals 方法被重写，那么对象的 hashCode 也尽量重写，并且产生 hashCode 使用的对象，一定要和 equals 方法中使用的一致，否则就会违反上面提到的第 2 点。&lt;/li&gt;
+&lt;li&gt;两个对象的 hashCode 相同，并不一定表示两个对象就相同，也就是不一定适用于 equals(java.lang.Object) 方法，只能够说明这两个对象在散列存储结构中，如 Hashtable，他们“存放在同一个篮子里“。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://pengzhenjin.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://pengzhenjin.top/tags/java/"/>
+    
+      <category term="HashMap" scheme="http://pengzhenjin.top/tags/HashMap/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java多线程详解</title>
     <link href="http://pengzhenjin.top/2018/10/06/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/"/>
     <id>http://pengzhenjin.top/2018/10/06/Java多线程详解/</id>
