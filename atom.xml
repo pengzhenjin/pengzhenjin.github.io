@@ -41,6 +41,30 @@
   </entry>
   
   <entry>
+    <title>Java队列详解</title>
+    <link href="http://pengzhenjin.top/2018/10/18/Java%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://pengzhenjin.top/2018/10/18/Java队列详解/</id>
+    <published>2018-10-17T16:00:00.000Z</published>
+    <updated>2019-09-03T02:54:21.435Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;队列简述&quot;&gt;&lt;a href=&quot;#队列简述&quot; class=&quot;headerlink&quot; title=&quot;队列简述&quot;&gt;&lt;/a&gt;队列简述&lt;/h3&gt;&lt;p&gt;Queue：基本上，一个队列就是一个先入先出（FIFO）的数据结构。&lt;/p&gt;&lt;p&gt;Queue 接口与 List、Set 同一级别，都是继承了 Collection 接口。LinkedList 实现了 Deque接口。&lt;/p&gt;&lt;p&gt;在并发队列上 JDK 提供了两套实现，一个是以 ConcurrentLinkedQueue 为代表的高性能队列非阻塞，一个是以 BlockingQueue 接口为代表的阻塞队列，无论哪种都继承自 Queue 接口。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://pengzhenjin.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://pengzhenjin.top/tags/java/"/>
+    
+      <category term="queue" scheme="http://pengzhenjin.top/tags/queue/"/>
+    
+      <category term="队列" scheme="http://pengzhenjin.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java多线程详解</title>
     <link href="http://pengzhenjin.top/2018/10/06/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/"/>
     <id>http://pengzhenjin.top/2018/10/06/Java多线程详解/</id>
@@ -240,9 +264,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
+    
+      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
@@ -264,9 +288,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
+    
+      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
@@ -288,9 +312,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
+    
+      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
