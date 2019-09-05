@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>彭真进的博客</title>
   
-  
+  <subtitle>业精于勤荒于嬉，行成于思毁于随</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://pengzhenjin.top/"/>
