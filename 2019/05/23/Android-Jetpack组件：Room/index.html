@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="介绍官方文档：Room谷歌实验室：官方教程SQL语法：SQLite教程谷歌官方的介绍：             The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power">
+<meta name="keywords" content="Android,Jetpack,Room">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Jetpack组件：Room">
+<meta property="og:url" content="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/index.html">
+<meta property="og:site_name" content="彭真进的博客">
+<meta property="og:description" content="介绍官方文档：Room谷歌实验室：官方教程SQL语法：SQLite教程谷歌官方的介绍：             The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/room-chapter-1/img1.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/room-chapter-1/img2.png">
+<meta property="og:updated_time" content="2019-10-14T06:56:09.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Jetpack组件：Room">
+<meta name="twitter:description" content="介绍官方文档：Room谷歌实验室：官方教程SQL语法：SQLite教程谷歌官方的介绍：             The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power">
+<meta name="twitter:image" content="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/room-chapter-1/img1.png">
+  <link rel="canonical" href="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Android-Jetpack组件：Room | 彭真进的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ede0ba70e7eb2eb800e94196368893eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭真进的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">业精于勤荒于嬉，行成于思毁于随</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭真进">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭真进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Android-Jetpack组件：Room
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-23 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-23T00:00:00+08:00">2019-05-23</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>9.4k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>9 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>官方文档：<a href="https://developer.android.com/topic/libraries/architecture/room" target="_blank" rel="noopener">Room</a><br>谷歌实验室：<a href="https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#0" target="_blank" rel="noopener">官方教程</a><br>SQL语法：<a href="https://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="noopener">SQLite教程</a></p><p>谷歌官方的介绍：</p><div class="note default">
+            <p>The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.</p>
+          </div><a id="more"></a>
+
+
+
+<p>简单来说：Room 是一个基于 SQLite 的强大数据库框架。</p>
+<p><strong>Room 优点：</strong></p>
+<ul>
+<li>使用编译时注解，能够对 @Query 和 @Entity 里面的 SQL 语句等进行验证。</li>
+<li>与 SQL 语句的使用更加贴近，能够降低学习成本。</li>
+<li>对 RxJava 2 的支持（大部分都 Android 数据库框架都支持），对 LiveData 的支持。</li>
+<li>@Embedded 能够减少表的创建。</li>
+</ul>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p><img src="room-chapter-1/img1.png" alt></p>
+<p>我们的目标挺简单的，三张表，用户表、鞋表和收藏记录表，用户表和鞋表存在多对多的关系，确定好目标之后，正式开始我们的实战之旅了。</p>
+<h4 id="第一步-添加依赖"><a href="#第一步-添加依赖" class="headerlink" title="第一步 添加依赖"></a>第一步 添加依赖</h4><p>模块层的 <code>build.gradle</code> 添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;kotlin-kapt&apos;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    // ... 省略无关</span><br><span class="line"></span><br><span class="line">    // room</span><br><span class="line">    implementation &quot;androidx.room:room-runtime:$rootProject.roomVersion&quot;</span><br><span class="line">    implementation &quot;androidx.room:room-ktx:$rootProject.roomVersion&quot;</span><br><span class="line">    kapt &quot;androidx.room:room-compiler:$rootProject.roomVersion&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.room:room-testing:$rootProject.roomVersion&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>项目下的 <code>build.gradle</code> 添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">   roomVersion = &apos;2.1.0-alpha06&apos;</span><br><span class="line">   //... 省略无关</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步-创建表（实体）"><a href="#第二步-创建表（实体）" class="headerlink" title="第二步 创建表（实体）"></a>第二步 创建表（实体）</h4><p>这里我们以用户表和收藏记录表为例，用户表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 用户表</span><br><span class="line"> */</span><br><span class="line">@Entity(tableName = &quot;user&quot;)</span><br><span class="line">data class User(</span><br><span class="line">    @ColumnInfo(name = &quot;user_account&quot;) val account: String // 账号</span><br><span class="line">    , @ColumnInfo(name = &quot;user_pwd&quot;) val pwd: String // 密码</span><br><span class="line">    , @ColumnInfo(name = &quot;user_name&quot;) val name: String</span><br><span class="line">    , @Embedded val address: Address // 地址</span><br><span class="line">    , @Ignore val state: Int // 状态只是临时用，所以不需要存储在数据库中</span><br><span class="line">) &#123;</span><br><span class="line">    @PrimaryKey(autoGenerate = true)</span><br><span class="line">    @ColumnInfo(name = &quot;id&quot;)</span><br><span class="line">    var id: Long = 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>收藏记录表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 喜欢的球鞋</span><br><span class="line"> */</span><br><span class="line">@Entity(</span><br><span class="line">    tableName = &quot;fav_shoe&quot;</span><br><span class="line">    , foreignKeys = [ForeignKey(entity = Shoe::class, parentColumns = [&quot;id&quot;], childColumns = [&quot;shoe_id&quot;])</span><br><span class="line">        , ForeignKey(entity = User::class, parentColumns = [&quot;id&quot;], childColumns = [&quot;user_id&quot;])</span><br><span class="line">    ],indices = [Index(&quot;shoe_id&quot;)]</span><br><span class="line">)</span><br><span class="line">data class FavouriteShoe(</span><br><span class="line">    @ColumnInfo(name = &quot;shoe_id&quot;) val shoeId: Long // 外键 鞋子的id</span><br><span class="line">    , @ColumnInfo(name = &quot;user_id&quot;) val userId: Long // 外键 用户的id</span><br><span class="line">    , @ColumnInfo(name = &quot;fav_date&quot;) val date: Date // 创建日期</span><br><span class="line"></span><br><span class="line">) &#123;</span><br><span class="line">    @PrimaryKey(autoGenerate = true)</span><br><span class="line">    @ColumnInfo(name = &quot;id&quot;)</span><br><span class="line">    var id: Long = 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于其中的一些注解，你可能不是很明白，解释如下：</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Entity</td>
+<td>声明这是一个表（实体），主要参数：tableName-表名、foreignKeys-外键、indices-索引。</td>
+</tr>
+<tr>
+<td>@ColumnInfo</td>
+<td>主要用来修改在数据库中的字段名。</td>
+</tr>
+<tr>
+<td>@PrimaryKey</td>
+<td>声明该字段主键并可以声明是否自动创建。</td>
+</tr>
+<tr>
+<td>@Ignore</td>
+<td>声明某个字段只是临时用，不存储在数据库中。</td>
+</tr>
+<tr>
+<td>@Embedded</td>
+<td>用于嵌套，里面的字段同样会存储在数据库中。</td>
+</tr>
+</tbody></table>
+<p>最后一个可能解释的不明，我们直接看例子就好，如我们的用户表，里面有一个变量 address，它是一个 Address 类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 地址</span><br><span class="line"> */</span><br><span class="line">data class Address(</span><br><span class="line">    val street:String,val state:String,val city:String,val postCode:String</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>通常情况下，如果我们想这些字段存储在数据库中，有两种方法：</p>
+<ul>
+<li>重新创建一个表进行一对一关联，但是多创建一个表显得麻烦。</li>
+<li>在用户表中增加字段，可是使用第二种方式映射出来的对象又显得不那么面向对象。</li>
+</ul>
+<p>@Embedded 解决了第二种方式中问题，既不需要多创建一个表，又能将数据库中映射的对象看上去面向对象。</p>
+<p>放上 Shoe 表，后面会用到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 鞋表</span><br><span class="line"> */</span><br><span class="line">@Entity(tableName = &quot;shoe&quot;)</span><br><span class="line">data class Shoe(</span><br><span class="line">    @ColumnInfo(name = &quot;shoe_name&quot;) val name: String // 鞋名</span><br><span class="line">    , @ColumnInfo(name = &quot;shoe_description&quot;) val description: String// 描述</span><br><span class="line">    , @ColumnInfo(name = &quot;shoe_price&quot;) val price: Float // 价格</span><br><span class="line">    , @ColumnInfo(name = &quot;shoe_brand&quot;) val brand: String // 品牌</span><br><span class="line">    , @ColumnInfo(name = &quot;shoe_imgUrl&quot;) val imageUrl: String // 图片地址</span><br><span class="line">) &#123;</span><br><span class="line">    @PrimaryKey(autoGenerate = true)</span><br><span class="line">    @ColumnInfo(name = &quot;id&quot;)</span><br><span class="line">    var id: Long = 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第三步-创建-Dao"><a href="#第三步-创建-Dao" class="headerlink" title="第三步 创建 Dao"></a>第三步 创建 Dao</h4><p>有了数据库，我们现在需要建立数据处理的方法，就是数据的增删查改。如果想声明一个 Dao，只要在抽象类或者接口加一个 @Dao 注解就行。</p>
+<p><strong>增</strong><br>@Insert 注解声明当前的方法为新增的方法，并且可以设置当新增冲突的时候处理的方法。</p>
+<p>用到增的地方有很多，Demo 中本地用户的注册、鞋子集合的新增和收藏的新增，这里我们选择具有代表性的 shoeDao：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 鞋子的方法</span><br><span class="line"> */</span><br><span class="line">@Dao</span><br><span class="line">interface ShoeDao &#123;</span><br><span class="line">    // 省略...</span><br><span class="line">    // 增加一双鞋子</span><br><span class="line">    @Insert(onConflict = OnConflictStrategy.REPLACE)</span><br><span class="line">    fun insertShoe(shoe: Shoe)</span><br><span class="line"></span><br><span class="line">    // 增加多双鞋子</span><br><span class="line">    // 除了List之外，也可以使用数组</span><br><span class="line">    @Insert(onConflict = OnConflictStrategy.REPLACE)</span><br><span class="line">    fun insertShoes(shoes: List&lt;Shoe&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>删</strong><br>@Delete 注解声明当前的方法是一个删除方法。</p>
+<p>用法与 @Insert 类似，同样以 ShoeDao 为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 鞋子的方法</span><br><span class="line"> */</span><br><span class="line">@Dao</span><br><span class="line">interface ShoeDao &#123;</span><br><span class="line">    // 省略...</span><br><span class="line">    // 删除一双鞋子</span><br><span class="line">    @Delete</span><br><span class="line">    fun deleteShoe(shoe: Shoe)</span><br><span class="line"></span><br><span class="line">    // 删除多个鞋子</span><br><span class="line">    // 参数也可以使用数组</span><br><span class="line">    @Delete</span><br><span class="line">    fun deleteShoes(shoes:List&lt;Shoe&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>改</strong><br>@Update 注解声明当前方法是一个更新方法。</p>
+<p>用法同样与 @Insert 类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 鞋子的方法</span><br><span class="line"> */</span><br><span class="line">@Dao</span><br><span class="line">interface ShoeDao &#123;</span><br><span class="line">    // 省略...</span><br><span class="line">    // 更新一双鞋</span><br><span class="line">    @Update</span><br><span class="line">    fun updateShoe(shoe:Shoe)</span><br><span class="line"></span><br><span class="line">    // 更新多双鞋</span><br><span class="line">    // 参数也可以是集合</span><br><span class="line">    @Update</span><br><span class="line">    fun updateShoes(shoes:Array&lt;Shoe&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>查</strong><br>增删改是如此的简单，查是否也是如此的简单呢？答案是否定的，Room 的查很接近原生的 SQL 语句。@Query 注解不仅可以声明这是一个查询语句，也可以用来删除和修改，不可以用来新增。</p>
+<p><strong>简单查询</strong><br>除了简单查询，这里还有如何配合 LiveData 和 RxJava 2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@Dao</span><br><span class="line">interface ShoeDao &#123;</span><br><span class="line"></span><br><span class="line">    // 查询一个</span><br><span class="line">    @Query(&quot;SELECT * FROM shoe WHERE id=:id&quot;)</span><br><span class="line">    fun findShoeById(id: Long): Shoe?</span><br><span class="line"></span><br><span class="line">    // 查询多个 通过品牌查询多款鞋 </span><br><span class="line">    @Query(&quot;SELECT * FROM shoe WHERE shoe_brand=:brand&quot;)</span><br><span class="line">    fun findShoesByBrand(brand: String): List&lt;Shoe&gt;</span><br><span class="line"></span><br><span class="line">    // 模糊查询 排序 同名鞋名查询鞋</span><br><span class="line">    @Query(&quot;SELECT * FROM shoe WHERE shoe_name LIKE :name ORDER BY shoe_brand ASC&quot;)</span><br><span class="line">    fun findShoesByName(name:String):List&lt;Shoe&gt;</span><br><span class="line"></span><br><span class="line">    // 配合LiveData 返回所有的鞋子</span><br><span class="line">    @Query(&quot;SELECT * FROM shoe&quot;)</span><br><span class="line">    fun getAllShoesLD(): LiveData&lt;List&lt;Shoe&gt;&gt;</span><br><span class="line"></span><br><span class="line">    // 配合LiveData 通过Id查询单款鞋子</span><br><span class="line">    @Query(&quot;SELECT * FROM shoe WHERE id=:id&quot;)</span><br><span class="line">    fun findShoeByIdLD(id: Long): LiveData&lt;Shoe&gt;</span><br><span class="line"></span><br><span class="line">    // 配合RxJava 通过Id查询单款鞋子</span><br><span class="line">    @Query(&quot;SELECT * FROM shoe WHERE id=:id&quot;)</span><br><span class="line">    fun findShoeByIdRx(id: Long): Flowable&lt;Shoe&gt;</span><br><span class="line"></span><br><span class="line">    // 省略...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查询多个的时候，可以返回 List 和数组，还可以配合 LiveData 和 RxJava 2。当然，更多的查询可以参考 SQL 语法。</p>
+<p><strong>复合查询</strong><br>因为本 Demo 并没有引入 RxJava 2，所以本文基本以 LiveData 为例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Dao</span><br><span class="line">interface ShoeDao &#123;</span><br><span class="line">    // 省略...</span><br><span class="line">    // 根据收藏结合 查询用户喜欢的鞋的集合 内联查询</span><br><span class="line">    @Query(</span><br><span class="line">        &quot;SELECT shoe.id,shoe.shoe_name,shoe.shoe_description,shoe.shoe_price,shoe.shoe_brand,shoe.shoe_imgUrl &quot; +</span><br><span class="line">                &quot;FROM shoe &quot; +</span><br><span class="line">                &quot;INNER JOIN fav_shoe ON fav_shoe.shoe_id = shoe.id &quot; +</span><br><span class="line">                &quot;WHERE fav_shoe.user_id = :userId&quot;</span><br><span class="line">    )</span><br><span class="line">    fun findShoesByUserId(userId: Long): LiveData&lt;List&lt;Shoe&gt;&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第四步-创建数据库"><a href="#第四步-创建数据库" class="headerlink" title="第四步 创建数据库"></a>第四步 创建数据库</h4><p>创建一个数据库对象是一件非常消耗资源，使用单例可以避免过多的资源消耗。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数据库文件</span><br><span class="line"> */</span><br><span class="line">@Database(entities = [User::class,Shoe::class,FavouriteShoe::class],version = 1,exportSchema = false)</span><br><span class="line">abstract class AppDataBase:RoomDatabase() &#123;</span><br><span class="line">    // 得到UserDao</span><br><span class="line">    abstract fun userDao():UserDao</span><br><span class="line">    // 得到ShoeDao</span><br><span class="line">    abstract fun shoeDao():ShoeDao</span><br><span class="line">    // 得到FavouriteShoeDao</span><br><span class="line">    abstract fun favouriteShoeDao():FavouriteShoeDao</span><br><span class="line"></span><br><span class="line">    companion object&#123;</span><br><span class="line">        @Volatile</span><br><span class="line">        private var instance:AppDataBase? = null</span><br><span class="line"></span><br><span class="line">        fun getInstance(context:Context):AppDataBase&#123;</span><br><span class="line">            return instance?: synchronized(this)&#123;</span><br><span class="line">                instance?:buildDataBase(context)</span><br><span class="line">                    .also &#123;</span><br><span class="line">                        instance = it</span><br><span class="line">                    &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private fun buildDataBase(context: Context):AppDataBase&#123;</span><br><span class="line">            return Room</span><br><span class="line">                .databaseBuilder(context,AppDataBase::class.java,&quot;jetPackDemo-database&quot;)</span><br><span class="line">                .addCallback(object :RoomDatabase.Callback()&#123;</span><br><span class="line">                    override fun onCreate(db: SupportSQLiteDatabase) &#123;</span><br><span class="line">                        super.onCreate(db)</span><br><span class="line"></span><br><span class="line">                        // 读取鞋的集合</span><br><span class="line">                        val request = OneTimeWorkRequestBuilder&lt;ShoeWorker&gt;().build()</span><br><span class="line">                        WorkManager.getInstance(context).enqueue(request)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .build()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Database 注解声明当前是一个数据库文件，注解中 entities 变量声明数据库中的表（实体），以及其他的例如版本等变量。同时，获取的 Dao也必须在数据库类中。完成之后，点击 build 目录下的 make project，系统就会自动帮我创建 AppDataBase 和 xxxDao 的实现类。</p>
+<h4 id="第五步-简要封装"><a href="#第五步-简要封装" class="headerlink" title="第五步 简要封装"></a>第五步 简要封装</h4><p>这里有必要提醒一下，在不使用 LiveData 和 RxJava 的前提下，Room 的操作是不可以放在主线程中的。这里选择比较有示范性的 UserRepository：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 用户处理仓库</span><br><span class="line"> */</span><br><span class="line">class UserRepository private constructor(private val userDao: UserDao) &#123;</span><br><span class="line">    //...</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 登录用户 本地数据库的查询</span><br><span class="line">     */</span><br><span class="line">    fun login(account: String, pwd: String):LiveData&lt;User?&gt;</span><br><span class="line">            = userDao.login(account,pwd)</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 注册一个用户 本地数据库的新增</span><br><span class="line">     */</span><br><span class="line">    suspend fun register(email: String, account: String, pwd: String):Long &#123;</span><br><span class="line">        return withContext(IO) &#123;</span><br><span class="line">             userDao.insertUser(User(account, pwd, email))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line">        @Volatile</span><br><span class="line">        private var instance: UserRepository? = null</span><br><span class="line">        fun getInstance(userDao: UserDao): UserRepository =</span><br><span class="line">            // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>register() 方法是一个普通方法，所以它需要在子线程使用，如代码所见，通过协程实现。<br>login() 是配合 LiveData 使用的，不需要额外创建子线程，但是他的核心数据库操作还是在子线程中实现的。</p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>除了上面的基本使用技巧之外，还有一些不常用的知识需要我们了解。</p>
+<h4 id="类型转换器"><a href="#类型转换器" class="headerlink" title="类型转换器"></a>类型转换器</h4><p>我们都知道，SQLite 支持的类型有：NULL、INTEGER、REAL、TEXT 和 BLOB，对于 Data 类，SQLite 还可以将其转化为 TEXT、REAL 或者 INTEGER，如果是 Calendar 类呢？Room 为你提供了解决方法，使用 @TypeConverter 注解，我们使用谷歌官方 Demo-SunFlower 例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Converters &#123;</span><br><span class="line">    @TypeConverter fun calendarToDatestamp(calendar: Calendar): Long = calendar.timeInMillis</span><br><span class="line"></span><br><span class="line">    @TypeConverter fun datestampToCalendar(value: Long): Calendar =</span><br><span class="line">            Calendar.getInstance().apply &#123; timeInMillis = value &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在数据库声明的时候，加上 @TypeConverters(Converters::class) 就行了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Database(...)</span><br><span class="line">@TypeConverters(Converters::class)</span><br><span class="line">abstract class AppDatabase : RoomDatabase() &#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h4><p>Room 的数据库迁移实在是麻烦，同查询一样，需要使用到 SQL 语句，但比查询麻烦的多。感兴趣的各位可以参考下面的文章：<br><a href="https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929" target="_blank" rel="noopener">《Understanding migrations with Room》</a> 谷歌工程师写的<br><a href="https://www.jianshu.com/p/3e358eb9ac43" target="_blank" rel="noopener">《Android Room 框架学习》</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="room-chapter-1/img2.png" alt></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://www.jianshu.com/p/3e358eb9ac43" target="_blank" rel="noopener">《Android Room 框架学习》</a><br><a href="https://medium.com/androiddevelopers/7-steps-to-room-27a5fe5f99b2" target="_blank" rel="noopener">《7 Steps To Room》</a></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\20\Android-Jetpack组件：Navigation\" rel="bookmark">Android-Jetpack组件：Navigation</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\21\Android-Jetpack组件：DataBinding\" rel="bookmark">Android-Jetpack组件：DataBinding</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\24\Android-Jetpack组件：Paging\" rel="bookmark">Android-Jetpack组件：Paging</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\22\Android-Jetpack组件：ViewModel和LiveData\" rel="bookmark">Android-Jetpack组件：ViewModel和LiveData</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\25\Android-Jetpack组件：WorkManager\" rel="bookmark">Android-Jetpack组件：WorkManager</a></div>
+      
+    </li>
+  
+  </ul>
+
+        
+      
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.png" alt="彭真进 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.png" alt="彭真进 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>彭真进</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/" title="Android-Jetpack组件：Room">http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            
+              <a href="/tags/Jetpack/" rel="tag"><i class="fa fa-tag"></i> Jetpack</a>
+            
+              <a href="/tags/Room/" rel="tag"><i class="fa fa-tag"></i> Room</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/" rel="next" title="Android-Jetpack组件：ViewModel和LiveData">
+                  <i class="fa fa-chevron-left"></i> Android-Jetpack组件：ViewModel和LiveData
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/05/24/Android-Jetpack组件：Paging/" rel="prev" title="Android-Jetpack组件：Paging">
+                  Android-Jetpack组件：Paging <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-添加依赖"><span class="nav-number">2.1.</span> <span class="nav-text">第一步 添加依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-创建表（实体）"><span class="nav-number">2.2.</span> <span class="nav-text">第二步 创建表（实体）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-创建-Dao"><span class="nav-number">2.3.</span> <span class="nav-text">第三步 创建 Dao</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步-创建数据库"><span class="nav-number">2.4.</span> <span class="nav-text">第四步 创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五步-简要封装"><span class="nav-number">2.5.</span> <span class="nav-text">第五步 简要封装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">3.</span> <span class="nav-text">更多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换器"><span class="nav-number">3.1.</span> <span class="nav-text">类型转换器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库迁移"><span class="nav-number">3.2.</span> <span class="nav-text">数据库迁移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="彭真进">
+  <p class="site-author-name" itemprop="name">彭真进</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/pengzhenjin" title="GitHub &rarr; https://github.com/pengzhenjin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:562260994@qq.com" title="E-Mail &rarr; mailto:562260994@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn" title="https://hexo.io/zh-cn" rel="noopener" target="_blank">Hexo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/docs" title="https://theme-next.org/docs" rel="noopener" target="_blank">NexT</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭真进 版权所有</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">417k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">6:19</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'a0aefd8233242f4272c5',
+      clientSecret: '89cbd8c8415d03a931cdeba5a9146e38803a1ad7',
+      repo: 'pengzhenjin.github.io',
+      owner: 'pengzhenjin',
+      admin: ['pengzhenjin'],
+      id: '09d02f744bde0d9c2e99249a8dca2036',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>

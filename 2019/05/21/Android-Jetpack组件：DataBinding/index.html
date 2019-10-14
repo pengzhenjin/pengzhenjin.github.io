@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="介绍MVVM 介绍MVVM（全称 Model-View-ViewModel）同 MVC 和 MVP 一样，是逻辑分层解偶的模式（如果你还不了解 MVC 和 MVP，建议还是提前了解一下）。结构图：从上图我们可以了解到MVVM的三要素，他们分别是： View 层：xml、Activity、Fragment、Adapter 和 View 等 Model 层：数据源（本地数据和网络数据等） ViewMo">
+<meta name="keywords" content="Android,Jetpack,DataBinding">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Jetpack组件：DataBinding">
+<meta property="og:url" content="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/index.html">
+<meta property="og:site_name" content="彭真进的博客">
+<meta property="og:description" content="介绍MVVM 介绍MVVM（全称 Model-View-ViewModel）同 MVC 和 MVP 一样，是逻辑分层解偶的模式（如果你还不了解 MVC 和 MVP，建议还是提前了解一下）。结构图：从上图我们可以了解到MVVM的三要素，他们分别是： View 层：xml、Activity、Fragment、Adapter 和 View 等 Model 层：数据源（本地数据和网络数据等） ViewMo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/databinding-chapter-1/img1.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/databinding-chapter-1/img2.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/databinding-chapter-1/img3.png">
+<meta property="og:updated_time" content="2019-10-11T10:16:50.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Jetpack组件：DataBinding">
+<meta name="twitter:description" content="介绍MVVM 介绍MVVM（全称 Model-View-ViewModel）同 MVC 和 MVP 一样，是逻辑分层解偶的模式（如果你还不了解 MVC 和 MVP，建议还是提前了解一下）。结构图：从上图我们可以了解到MVVM的三要素，他们分别是： View 层：xml、Activity、Fragment、Adapter 和 View 等 Model 层：数据源（本地数据和网络数据等） ViewMo">
+<meta name="twitter:image" content="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/databinding-chapter-1/img1.png">
+  <link rel="canonical" href="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Android-Jetpack组件：DataBinding | 彭真进的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ede0ba70e7eb2eb800e94196368893eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭真进的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">业精于勤荒于嬉，行成于思毁于随</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭真进">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭真进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Android-Jetpack组件：DataBinding
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-21T00:00:00+08:00">2019-05-21</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>9.5k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>9 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="MVVM-介绍"><a href="#MVVM-介绍" class="headerlink" title="MVVM 介绍"></a>MVVM 介绍</h4><p>MVVM（全称 Model-View-ViewModel）同 MVC 和 MVP 一样，是逻辑分层解偶的模式（如果你还不了解 MVC 和 MVP，建议还是提前了解一下）。</p><p>结构图：</p><p><img src="databinding-chapter-1/img1.png" alt></p><p>从上图我们可以了解到MVVM的三要素，他们分别是：</p><ul>
+<li>View 层：xml、Activity、Fragment、Adapter 和 View 等</li>
+<li>Model 层：数据源（本地数据和网络数据等）</li>
+<li>ViewModel 层：View 层处理数据以及逻辑处理</li>
+</ul><a id="more"></a>
+
+
+
+
+<h4 id="Data-Binding-介绍"><a href="#Data-Binding-介绍" class="headerlink" title="Data Binding 介绍"></a>Data Binding 介绍</h4><p>Data Binding 不算特别新的东西，2015 年 Google 就推出了，但即便是现在，很多人都没有学习过它，我就是这些工程师中的一位，因为我觉得 MVP 已经足够帮我处理日常的业务，Android Jetpack 的出现，是我研究 Data Binding 的一个契机。</p>
+<p>在进行下文之前，我有必要声明一下，MVVM 和 Data Binding 是两个不同的概念，MVVM 是一种架构模式，而 Data Binding 是一个实现数据和UI绑定的框架，是构建MVVM模式的一个工具。</p>
+<p><strong>学习姿势：</strong></p>
+<p>我依然认为官方文档是最好的学习途径：<br>官方文档：<a href="https://developer.android.com/topic/libraries/data-binding" target="_blank" rel="noopener">Data Binding Library</a><br>谷歌实验室：<a href="https://codelabs.developers.google.com/codelabs/android-databinding/#0" target="_blank" rel="noopener">官方教程</a><br>官方Demo地址：<a href="https://github.com/googlecodelabs/android-databinding" target="_blank" rel="noopener">https://github.com/googlecodelabs/android-databinding</a></p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>在这里，我打算先在上一节 Android-Jetpack组件：Navigation 的基础代码上进行拓展（如有涉及到 Navigation 的代码，我会注明），本文会在登录和注册模块的基础上进行讲解，后期如有需要，会拓展到其他模块。</p>
+<h4 id="第一步-在-app-模块下的-build-gradle-文件添加内容"><a href="#第一步-在-app-模块下的-build-gradle-文件添加内容" class="headerlink" title="第一步 在 app 模块下的 build.gradle 文件添加内容"></a>第一步 在 app 模块下的 <code>build.gradle</code> 文件添加内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">...</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">       enabled true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步-构建-LoginModel"><a href="#第二步-构建-LoginModel" class="headerlink" title="第二步 构建 LoginModel"></a>第二步 构建 LoginModel</h4><p>创建登录的 LoginModel，LoginModel 主要负责登录逻辑的处理以及两个输入框内容改变的时候数据更新的处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class LoginModel constructor(name: String, pwd: String, context: Context) &#123;</span><br><span class="line">    val n = ObservableField&lt;String&gt;(name)</span><br><span class="line">    val p = ObservableField&lt;String&gt;(pwd)</span><br><span class="line">    var context: Context = context</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户名改变回调的函数</span><br><span class="line">     */</span><br><span class="line">    fun onNameChanged(s: CharSequence) &#123;</span><br><span class="line">        n.set(s.toString())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 密码改变的回调函数</span><br><span class="line">     */</span><br><span class="line">    fun onPwdChanged(s: CharSequence, start: Int, before: Int, count: Int) &#123;</span><br><span class="line">        p.set(s.toString())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun login() &#123;</span><br><span class="line">        if (n.get().equals(BaseConstant.USER_NAME)</span><br><span class="line">            &amp;&amp; p.get().equals(BaseConstant.USER_PWD)</span><br><span class="line">        ) &#123;</span><br><span class="line">            Toast.makeText(context, &quot;账号密码正确&quot;, Toast.LENGTH_SHORT).show()</span><br><span class="line">            val intent = Intent(context, MainActivity::class.java)</span><br><span class="line">            context.startActivity(intent)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我相信同学们可能会对 ObservableField 存在疑惑，那么 ObservableField 是什么呢？它其实是一个可观察的域，通过泛型来使用，可以使用的方法也就三个：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ObservableField(T value)</td>
+<td>构造函数，设置可观察的域</td>
+</tr>
+<tr>
+<td>T get()</td>
+<td>获取可观察的域的内容，可以使用UI控件监测它的值</td>
+</tr>
+<tr>
+<td>set(T value)</td>
+<td>设置可观察的域，设置成功之后，会通知UI控件进行更新</td>
+</tr>
+</tbody></table>
+<p>不过，除了使用 ObservableField 之外，Data Binding 为我们提供了基本类型的 ObservableXXX(如ObservableInt)和存放容器的 ObservableXXX(如ObservableList<t>)等，同样，如果你想让你自定义的类变成可观察状态，需要实现 Observable 接口。</t></p>
+<p>我们再回头看看 LoginModel 这个类，它其实只有分别用来观察 name 和 pwd 的成员变量 n 和 p ，外加一个处理登录逻辑的方法，非常简单。</p>
+<h4 id="第三步-创建布局文件"><a href="#第三步-创建布局文件" class="headerlink" title="第三步 创建布局文件"></a>第三步 创建布局文件</h4><p>引入 Data Binding 之后的布局文件的使用方式会和以前的布局使用方式有很大的不同，且听我一一解释：</p>
+<table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout</td>
+<td>用作布局的根节点，只能包裹一个 View 标签，且不能包裹 merge 标签。</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Data Binding 的数据，只能存在一个 data 标签。</td>
+</tr>
+<tr>
+<td>variable</td>
+<td>data 中使用，数据的变量标签，type 属性指明变量的类，如 com.joe.jetpackdemo.viewmodel.LoginModel。name 属性指明变量的名字，方便布局中使用。</td>
+</tr>
+<tr>
+<td>import</td>
+<td>data 中使用，需要使用静态方法和静态常量，如需要使用 View.Visble 属性的时候，则需导入 <import type="android.view.View">。type 属性指明类的路径，如果两个 import 标签导入的类名相同，则可以使用alias属性声明别名，使用的时候直接使用别名即可。</import></td>
+</tr>
+<tr>
+<td>include</td>
+<td>View 标签中使用，作用同普通布局中的 include 一样，需要使用 bind:&lt;参数名&gt;传递参数。</td>
+</tr>
+</tbody></table>
+<p>我们再看一下LoginFragment下的 <code>fragment_login.xml</code> 布局文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">        xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">        xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;data&gt;</span><br><span class="line">        &lt;!--需要的viewModel,通过mBinding.vm=mViewMode注入--&gt;</span><br><span class="line">        &lt;variable</span><br><span class="line">            name=&quot;model&quot;</span><br><span class="line">            type=&quot;com.joe.jetpackdemo.viewmodel.LoginModel&quot;/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;variable</span><br><span class="line">            name=&quot;activity&quot;</span><br><span class="line">            type=&quot;androidx.fragment.app.FragmentActivity&quot;/&gt;</span><br><span class="line">    &lt;/data&gt;</span><br><span class="line"></span><br><span class="line">    &lt;androidx.constraintlayout.widget.ConstraintLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:id=&quot;@+id/txt_cancel&quot;</span><br><span class="line">            android:onClick=&quot;@&#123;()-&gt; activity.onBackPressed()&#125;&quot;</span><br><span class="line">            /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:id=&quot;@+id/txt_title&quot;</span><br><span class="line">            app:layout_constraintTop_toTopOf=&quot;parent&quot;</span><br><span class="line">            .../&gt;</span><br><span class="line"></span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:id=&quot;@+id/et_account&quot;</span><br><span class="line">            android:text=&quot;@&#123;model.n.get()&#125;&quot;</span><br><span class="line">            android:onTextChanged=&quot;@&#123;(text, start, before, count)-&gt;model.onNameChanged(text)&#125;&quot;</span><br><span class="line">            ...</span><br><span class="line">            /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:id=&quot;@+id/et_pwd&quot;</span><br><span class="line">            android:text=&quot;@&#123;model.p.get()&#125;&quot;</span><br><span class="line">            android:onTextChanged=&quot;@&#123;model::onPwdChanged&#125;&quot;</span><br><span class="line">            ...</span><br><span class="line">            /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn_login&quot;</span><br><span class="line">            android:text=&quot;Sign in&quot;</span><br><span class="line">            android:onClick=&quot;@&#123;() -&gt; model.login()&#125;&quot;</span><br><span class="line">            android:enabled=&quot;@&#123;(model.p.get().isEmpty()||model.n.get().isEmpty()) ? false : true&#125;&quot;</span><br><span class="line">            .../&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>variable 有两个:</strong></p>
+<ul>
+<li>model：类型为 <code>com.joe.jetpackdemo.viewmodel.LoginModel</code>，绑定用户名详见 <code>et_accountEditText</code> 中的 <code>android:text=&quot;@{model.n.get()}</code>“，当 <code>EditText</code> 输入框内容变化的时候有如下处理 <code>android:onTextChanged=&quot;@{(text, start, before, count)-&gt;model.onNameChanged(text)}</code>“，以及登录按钮处理 <code>android:onClick=&quot;@{() -&gt; model.login()}</code>“。</li>
+<li>activity：类型为 <code>androidx.fragment.app.FragmentActivity</code> ，主要用来返回按钮的事件处理，详见 <code>txt_cancelTextView</code> 的 <code>android:onClick=&quot;@{()-&gt; activity.onBackPressed()}</code>“。</li>
+</ul>
+<p>对于以上的内容，我仍然有知识点需要讲解：</p>
+<p><strong>1. 属性的引用</strong><br>如果想使用 ViewModel 中成员变量，如直接使用 model.p。</p>
+<p><strong>2. 事件绑定</strong><br>事件绑定包括方法引用和监听绑定：</p>
+<ul>
+<li>方法引用：参数类型和返回类型要一致，参考 <code>et_pwdEditText</code> 的 <code>android:onTextChanged</code> 引用。</li>
+<li>监听绑定：相比较于方法引用，监听绑定的要求就没那么高了，我们可以使用自行定义的函数，参考 <code>et_accountEditText</code> 的 <code>android:onTextChanged</code> 引用。</li>
+</ul>
+<p><strong>3. 表达式</strong><br>如果你注意到了 <code>btn_loginButton</code> 在密码没有内容的时候是灰色的，是因为它在 <code>android:enabled</code> 使用了表达式：<code>@{(model.p.get().isEmpty()||model.n.get().isEmpty()) ? false : true}</code>，它的意思是用户名和密码为空的时候登录的 <code>enable</code> 属性为 <code>false</code>，这是普通的三元表达式，除了上述的 <code>||</code> 和三元表达式之外，Data Binding 还支持：</p>
+<ul>
+<li>运算符 + - / * %</li>
+<li>字符串连接 +</li>
+<li>逻辑与或 &amp;&amp; ||</li>
+<li>二进制 &amp; | ^</li>
+<li>一元 + - ! ~</li>
+<li>移位 &gt;&gt; &gt;&gt;&gt; &lt;&lt;</li>
+<li>比较 == &gt; &lt; &gt;= &lt;= (Note that &lt; needs to be escaped as &lt;)</li>
+<li>instanceof</li>
+<li>Grouping ()</li>
+<li>Literals - character, String, numeric, null</li>
+<li>Cast</li>
+<li>方法调用</li>
+<li>域访问</li>
+<li>数组访问</li>
+<li>三元操作符</li>
+</ul>
+<p>除了上述之外，Data Binding 新增了空合并操作符 <code>??</code>，例如 <code>android:text=&quot;@{user.displayName ?? user.lastName}</code>“，它等价于 <code>android:text=&quot;@{user.displayName != null ? user.displayName : user.lastName}</code>“。</p>
+<h4 id="第四步-生成绑定类"><a href="#第四步-生成绑定类" class="headerlink" title="第四步 生成绑定类"></a>第四步 生成绑定类</h4><p>我们的布局文件创建完毕之后，点击 Build 下面的 Make Project，让系统帮我生成绑定类，生成绑定的类如下：</p>
+<p><img src="databinding-chapter-1/img2.png" alt></p>
+<p>下面我们只需在 LoginFragment 完成绑定即可，绑定操作既可以使用上述生成的 FragmentLoginBinding 也可以使用自带的 DataBindingUtil 完成：<br><strong>1. 使用 DataBindingUtil</strong><br>我们可以看一下 DataBindingUtil 的一些常用 Api：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setContentView</td>
+<td>用来进行 Activity 下面的绑定</td>
+</tr>
+<tr>
+<td>inflate</td>
+<td>用来进行 Fragment 下面的绑定</td>
+</tr>
+<tr>
+<td>bind</td>
+<td>用来进行 View 的绑定</td>
+</tr>
+</tbody></table>
+<p>LoginFragment 绑定代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">override fun onCreateView(</span><br><span class="line">        inflater: LayoutInflater, container: ViewGroup?,</span><br><span class="line">        savedInstanceState: Bundle?</span><br><span class="line">    ): View? &#123;</span><br><span class="line">        val binding: FragmentLoginBinding = DataBindingUtil.inflate(</span><br><span class="line">            inflater</span><br><span class="line">            , R.layout.fragment_login</span><br><span class="line">            , container</span><br><span class="line">            , false</span><br><span class="line">        )</span><br><span class="line">        loginModel = LoginModel(&quot;&quot;,&quot;&quot;,context!!)</span><br><span class="line">        binding.model = loginModel</span><br><span class="line">        binding.activity = activity</span><br><span class="line">        return binding.root</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 使用生成的 FragmentLoginBinding</strong><br>使用方法与第一种类似，仅需将生成方式改成 <code>val binding = FragmentLoginBinding.inflate( inflater , container , false )</code> 即可</p>
+<p>运行一下代码，开始图的效果就出现了。</p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>Data Binding 还有一些有趣的功能，为了让同学们了解到更多的知识，我们在这里有必要探讨一下：</p>
+<h4 id="布局中属性的设置"><a href="#布局中属性的设置" class="headerlink" title="布局中属性的设置"></a>布局中属性的设置</h4><p><strong>1. 有属性有 setter 的情况</strong><br>如果 XXXView 类有成员变量 borderColor，并且 XXXView 类有 <code>setBoderColor(int color)</code> 方法，那么在布局中我们就可以借助 Data Binding 直接使用 <code>app:borderColor</code> 这个属性，不太明白？没关系，以 DrawerLayout 为例，DrawerLayout 没有声明 <code>app:scrimColor</code>、<code>app:drawerListener</code>，但是 DrawerLayout 有 <code>mScrimColor:int</code>、<code>mListener:DrawerListener</code> 这两个成员变量并且具有这两个属性的 setter 的方法，他就可以直接使用 <code>app:scrimColor</code>、<code>app:drawerListener</code> 这两个属性，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v4.widget.DrawerLayout</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    app:scrimColor=&quot;@&#123;@color/scrim&#125;&quot;</span><br><span class="line">    app:drawerListener=&quot;@&#123;fragment.drawerListener&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 没有setter但是有相关方法</strong><br>还用 XXXView 为例，它有成员变量 borderColor，这次设置 borderColor 的方法是 <code>setBColor(总有程序员乱写方法名~)</code>，强行用 <code>app:borderColor</code> 显然是行不通的，可以这样用的前提是必须有 <code>setBoderColor(int color)</code> 方法，显然 <code>setBColor</code> 不匹配，但我们可以通过 <code>BindingMethods</code> 注解实现 <code>app:borderColor</code> 的使用，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@BindingMethods(value = [BindingMethod(type = 包名.XXXView::class, attribute = &quot;app:borderColor&quot;, method = &quot;setBColor&quot;)])</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 自定义属性</strong><br>这次不仅没 setter 方法，甚至连成员变量都需要自带（条件越来越刻苦~），这次我们的目标就是给 EditText 添加文本监听器，先在 LoginModel 中自定义一个监听器并使用 <code>@BindingAdapter</code> 注解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// SimpleWatcher 是简化了的TextWatcher</span><br><span class="line">val nameWatcher = object : SimpleWatcher() &#123;</span><br><span class="line">    override fun afterTextChanged(s: Editable) &#123;</span><br><span class="line">        super.afterTextChanged(s)</span><br><span class="line"></span><br><span class="line">        n.set(s.toString())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@BindingAdapter(&quot;addTextChangedListener&quot;)</span><br><span class="line">fun addTextChangedListener(editText: EditText, simpleWatcher: SimpleWatcher) &#123;</span><br><span class="line">    editText.addTextChangedListener(simpleWatcher)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就可以在布局文件中对 EditText 愉快的使用 <code>app:addTextChangedListener</code> 属性了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">    android:id=&quot;@+id/et_account&quot;</span><br><span class="line">    android:text=&quot;@&#123;model.n.get()&#125;&quot;</span><br><span class="line">    app:addTextChangedListener=&quot;@&#123;model.nameWatcher&#125;&quot;</span><br><span class="line">    ...</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果与我们之前使用的时候一样。</p>
+<h4 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h4><p>使用双向绑定可以简化我们的代码，比如我们上面的 EditText 在实现双向绑定之后既不需要添加 SimpleWatcher 也不需要用方法调用，怎么实现呢？代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">    android:id=&quot;@+id/et_account&quot;</span><br><span class="line">    android:text=&quot;@=&#123;model.n.get()&#125;&quot;</span><br><span class="line">    ...</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>仅仅在将 <code>@{model.n.get()}</code> 替换为 <code>@={model.n.get()}</code> ，多了一个 <code>=</code> 号而已，需要注意的是，属性必须是可观察的，可以使用上面提到的 <code>ObservableField</code>，也可以自定义实现 <code>BaseObservable</code> 接口，双向绑定的时候需要注意无限循环，更多关于双向绑定还请查看官方文档。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="databinding-chapter-1/img3.png" alt></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://juejin.im/post/5a55ecb6f265da3e4d7298e9#heading-17" target="_blank" rel="noopener">DataBinding最全使用说明</a><br><a href="http://yamlee.me/2016/10/24/2016-10-25-%E6%B7%B1%E5%85%A5Android%20Data%20Binding%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">深入Android Data Binding</a><br><a href="https://developer.android.com/topic/libraries/data-binding/two-way" target="_blank" rel="noopener">官方文档</a></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\20\Android-Jetpack组件：Navigation\" rel="bookmark">Android-Jetpack组件：Navigation</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\24\Android-Jetpack组件：Paging\" rel="bookmark">Android-Jetpack组件：Paging</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\23\Android-Jetpack组件：Room\" rel="bookmark">Android-Jetpack组件：Room</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\22\Android-Jetpack组件：ViewModel和LiveData\" rel="bookmark">Android-Jetpack组件：ViewModel和LiveData</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\25\Android-Jetpack组件：WorkManager\" rel="bookmark">Android-Jetpack组件：WorkManager</a></div>
+      
+    </li>
+  
+  </ul>
+
+        
+      
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.png" alt="彭真进 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.png" alt="彭真进 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>彭真进</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/" title="Android-Jetpack组件：DataBinding">http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            
+              <a href="/tags/Jetpack/" rel="tag"><i class="fa fa-tag"></i> Jetpack</a>
+            
+              <a href="/tags/DataBinding/" rel="tag"><i class="fa fa-tag"></i> DataBinding</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/05/20/Android-Jetpack组件：Navigation/" rel="next" title="Android-Jetpack组件：Navigation">
+                  <i class="fa fa-chevron-left"></i> Android-Jetpack组件：Navigation
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/" rel="prev" title="Android-Jetpack组件：ViewModel和LiveData">
+                  Android-Jetpack组件：ViewModel和LiveData <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MVVM-介绍"><span class="nav-number">1.1.</span> <span class="nav-text">MVVM 介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-Binding-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">Data Binding 介绍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-在-app-模块下的-build-gradle-文件添加内容"><span class="nav-number">2.1.</span> <span class="nav-text">第一步 在 app 模块下的 build.gradle 文件添加内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-构建-LoginModel"><span class="nav-number">2.2.</span> <span class="nav-text">第二步 构建 LoginModel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-创建布局文件"><span class="nav-number">2.3.</span> <span class="nav-text">第三步 创建布局文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步-生成绑定类"><span class="nav-number">2.4.</span> <span class="nav-text">第四步 生成绑定类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">3.</span> <span class="nav-text">更多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#布局中属性的设置"><span class="nav-number">3.1.</span> <span class="nav-text">布局中属性的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双向绑定"><span class="nav-number">3.2.</span> <span class="nav-text">双向绑定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="彭真进">
+  <p class="site-author-name" itemprop="name">彭真进</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/pengzhenjin" title="GitHub &rarr; https://github.com/pengzhenjin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:562260994@qq.com" title="E-Mail &rarr; mailto:562260994@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn" title="https://hexo.io/zh-cn" rel="noopener" target="_blank">Hexo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/docs" title="https://theme-next.org/docs" rel="noopener" target="_blank">NexT</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭真进 版权所有</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">417k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">6:19</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'a0aefd8233242f4272c5',
+      clientSecret: '89cbd8c8415d03a931cdeba5a9146e38803a1ad7',
+      repo: 'pengzhenjin.github.io',
+      owner: 'pengzhenjin',
+      admin: ['pengzhenjin'],
+      id: '2bca47a2950bd1415b1d375f52aa4d37',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="LiveData官方文档：LiveData在讲 LiveData 之前，我们先看看 LiveData 和 ViewModel 的作用：从这一张图，我们可以看出 ViewModel 和 LiveData 在整个MVVM架构中担当数据驱动的职责，这也是 MVVM 模式中 ViewModel 层的作用。介绍">
+<meta name="keywords" content="Android,Jetpack,ViewModel,LiveData">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Jetpack组件：ViewModel和LiveData">
+<meta property="og:url" content="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/index.html">
+<meta property="og:site_name" content="彭真进的博客">
+<meta property="og:description" content="LiveData官方文档：LiveData在讲 LiveData 之前，我们先看看 LiveData 和 ViewModel 的作用：从这一张图，我们可以看出 ViewModel 和 LiveData 在整个MVVM架构中担当数据驱动的职责，这也是 MVVM 模式中 ViewModel 层的作用。介绍">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/viewmodel-livedata-chapter-1/img1.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/viewmodel-livedata-chapter-1/img2.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/viewmodel-livedata-chapter-1/img3.png">
+<meta property="og:updated_time" content="2019-10-13T12:32:13.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Jetpack组件：ViewModel和LiveData">
+<meta name="twitter:description" content="LiveData官方文档：LiveData在讲 LiveData 之前，我们先看看 LiveData 和 ViewModel 的作用：从这一张图，我们可以看出 ViewModel 和 LiveData 在整个MVVM架构中担当数据驱动的职责，这也是 MVVM 模式中 ViewModel 层的作用。介绍">
+<meta name="twitter:image" content="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/viewmodel-livedata-chapter-1/img1.png">
+  <link rel="canonical" href="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Android-Jetpack组件：ViewModel和LiveData | 彭真进的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ede0ba70e7eb2eb800e94196368893eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭真进的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">业精于勤荒于嬉，行成于思毁于随</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭真进">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭真进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Android-Jetpack组件：ViewModel和LiveData
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-22T00:00:00+08:00">2019-05-22</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>9k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>8 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h3><p>官方文档：<a href="https://developer.android.google.cn/topic/libraries/architecture/livedata.html" target="_blank" rel="noopener">LiveData</a></p><p>在讲 LiveData 之前，我们先看看 LiveData 和 ViewModel 的作用：</p><p><img src="viewmodel-livedata-chapter-1/img1.png" alt></p><p>从这一张图，我们可以看出 ViewModel 和 LiveData 在整个MVVM架构中担当数据驱动的职责，这也是 MVVM 模式中 ViewModel 层的作用。</p><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><a id="more"></a>
+
+
+
+<p>看了上面的图，对于 LiveData 我们还是感到疑惑，那么我们看看官网是如何定义的：</p>
+<div class="note default">
+            <p>LiveData is an observable data holder class. Unlike a regular observable, LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services.</p>
+          </div>
+
+<p>从官网的介绍可以看到，LiveData 作用跟 RxJava 类似，是观察数据的类，相比 RxJava，它能够在 Activity、Fragment 和 Service 之中正确的处理生命周期。那么 LiveData 有什么优点呢？</p>
+<ul>
+<li>数据变更的时候更新UI</li>
+<li>没有内存泄漏</li>
+<li>不会因为停止Activity崩溃</li>
+<li>无需手动处理生命周期</li>
+<li>共享资源</li>
+</ul>
+<p>乍看之下 LiveData 挺鸡肋的，事实也确实如此，因为 LiveData 能够实现的功能 RxJava 也可以实现，而且与 LiveData 相比，RxJava 拥有着更加丰富的生态，当然，谷歌的官方架构仍然值得我们去学习。</p>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><p>LiveData 常用的方法也就如下几个：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>observe(@NonNull LifecycleOwner owner, @NonNull Observer&lt;? super T&gt; observer)</td>
+<td>最常用的方法，需要提供 Observer 处理数据变更后的处理。LifecycleOwner 则是我们能够正确处理声明周期的关键。</td>
+</tr>
+<tr>
+<td>setValue(T value)</td>
+<td>设置数据。</td>
+</tr>
+<tr>
+<td>getValue():T</td>
+<td>获取数据。</td>
+</tr>
+<tr>
+<td>postValue(T value)</td>
+<td>在主线程中更新数据。</td>
+</tr>
+</tbody></table>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>我看见绝大部分的 LiveData 都是配合其他 Android Jetpack 组件使用的，具体情况具体分析。</p>
+<ul>
+<li>ViewModel: 见下文。</li>
+<li>Room：先参考Demo，文章后续推出。</li>
+</ul>
+<h3 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h3><p>官方文档：<a href="https://developer.android.com/topic/libraries/architecture/viewmodel" target="_blank" rel="noopener">ViewModel</a><br>谷歌实验室：<a href="https://codelabs.developers.google.com/codelabs/android-lifecycles/#0" target="_blank" rel="noopener">教程</a><br>谷歌官方Demo地址：<a href="https://github.com/googlecodelabs/android-lifecycles" target="_blank" rel="noopener">https://github.com/googlecodelabs/android-lifecycles</a></p>
+<p>众所周知，MVVM 层中 ViewModel 层用来作逻辑处理的，那么我们 Android Jetpack 组件中 ViewModel 的作用是否也一致呢？</p>
+<h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><p>我们先来看官网的介绍：</p>
+<div class="note default">
+            <p>The ViewModel class is designed to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows data to survive configuration changes such as screen rotations.</p>
+          </div>
+
+<p>ViewModel 同样具有生命周期意识的处理跟UI相关的数据，并且，当设备的一些配置信息改变（例如屏幕旋转）它的数据不会消失。</p>
+<p>通常情况下，如果我们不做特殊处理，当屏幕旋转的时候，数据会消失，那 ViewModel 管理的数据为什么不会消失呢，是因为 ViewModel 的生命周期：</p>
+<p><img src="viewmodel-livedata-chapter-1/img2.png" alt></p>
+<p>ViewModel 的另一个特点就是同一个 Activity 的 Fragment 之间可以使用 ViewModel 实现共享数据。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>继承 ViewModel 即可。</p>
+<h4 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h4><h5 id="第一步：添加依赖"><a href="#第一步：添加依赖" class="headerlink" title="第一步：添加依赖"></a>第一步：添加依赖</h5><p>添加进 module 下面的 <code>build.gradle</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ext.lifecycleVersion = &apos;2.2.0-alpha01&apos;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    //...</span><br><span class="line"></span><br><span class="line">    // liveData</span><br><span class="line">    implementation &quot;androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion&quot;</span><br><span class="line">    // viewModel</span><br><span class="line">    implementation &quot;androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion&quot;</span><br><span class="line">    implementation &quot;androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="第二步：创建-ShoeModel"><a href="#第二步：创建-ShoeModel" class="headerlink" title="第二步：创建 ShoeModel"></a>第二步：创建 ShoeModel</h5><p>继承 ViewModel 类，分别创建对品牌名的观察对象 <code>brand:MutableLiveData&lt;String&gt;</code> 和对鞋子集合的观察对象 <code>shoes: LiveData&lt;List&lt;Shoe&gt;&gt;</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class ShoeModel constructor(shoeRepository: ShoeRepository) : ViewModel() &#123;</span><br><span class="line"></span><br><span class="line">    // 品牌的观察对象 默认观察所有的品牌</span><br><span class="line">    private val brand = MutableLiveData&lt;String&gt;().apply &#123;</span><br><span class="line">        value = ALL</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 鞋子集合的观察类</span><br><span class="line">    val shoes: LiveData&lt;List&lt;Shoe&gt;&gt; = brand.switchMap &#123;</span><br><span class="line">        // Room数据库查询，只要知道返回的是LiveData&lt;List&lt;Shoe&gt;&gt;即可</span><br><span class="line">        if (it == ALL) &#123;</span><br><span class="line">            shoeRepository.getAllShoes()</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            shoeRepository.getShoesByBrand(it)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //... 不重要的函数省略</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line">        private const val ALL = &quot;所有&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="第三步：获取-ViewModel"><a href="#第三步：获取-ViewModel" class="headerlink" title="第三步：获取 ViewModel"></a>第三步：获取 ViewModel</h5><p><strong>无构造参数获取：</strong><br>构造函数没有参数的情况下，获取 ShoeModel 很简单，<code>ViewModelProviders.of(this).get(ShoeModel::class.java)</code> 这样就可以返回一个我们需要的 ShoeModel 了。</p>
+<p><strong>有构造参数获取：</strong><br>不过，上面的 ShoeModel 中我们在构造函数中需要一个 ShoeRepository 参数，上述方法是显然行不通的，这种情况下我们需要自定义实现 Factory：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class ShoeModelFactory(private val repository: ShoeRepository) : ViewModelProvider.NewInstanceFactory() &#123;</span><br><span class="line">    override fun &lt;T : ViewModel?&gt; create(modelClass: Class&lt;T&gt;): T &#123;</span><br><span class="line">        return ShoeModel(repository) as T</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了使用方便，又写了一个工具类 CustomViewModelProvider：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">object CustomViewModelProvider &#123;</span><br><span class="line"></span><br><span class="line">    // ...省略无关代码</span><br><span class="line"></span><br><span class="line">    fun providerShoeModel(context: Context):ShoeModelFactory&#123;</span><br><span class="line">        val repository:ShoeRepository = RepositoryProvider.providerShoeRepository(context)</span><br><span class="line">        return ShoeModelFactory(repository)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后在 ShoeFragment 中获取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// by viewModels 需要依赖 &quot;androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion&quot;</span><br><span class="line">private val viewModel: ShoeModel by viewModels &#123;</span><br><span class="line">    CustomViewModelProvider.providerShoeModel(requireContext())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="第四步：使用-ViewModel"><a href="#第四步：使用-ViewModel" class="headerlink" title="第四步：使用 ViewModel"></a>第四步：使用 ViewModel</h5><p>ViewModel 的使用需要结合具体的业务，比如我这里的 ShoeModel，因为 ShoeFragment 的代码不多，我直接贴出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 鞋子集合的Fragment</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">class ShoeFragment : Fragment() &#123;</span><br><span class="line"></span><br><span class="line">    // by viewModels 需要依赖 &quot;androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion&quot;</span><br><span class="line">    private val viewModel: ShoeModel by viewModels &#123;</span><br><span class="line">        CustomViewModelProvider.providerShoeModel(requireContext())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun onCreateView(</span><br><span class="line">        inflater: LayoutInflater, container: ViewGroup?,</span><br><span class="line">        savedInstanceState: Bundle?</span><br><span class="line">    ): View? &#123;</span><br><span class="line">        val binding: FragmentShoeBinding = FragmentShoeBinding.inflate(inflater, container, false)</span><br><span class="line">        context ?: return binding.root</span><br><span class="line">        ViewModelProviders.of(this).get(ShoeModel::class.java)</span><br><span class="line">        // RecyclerView 的适配器 ShoeAdapter</span><br><span class="line">        val adapter = ShoeAdapter()</span><br><span class="line">        binding.recycler.adapter = adapter</span><br><span class="line">        onSubscribeUi(adapter)</span><br><span class="line">        return binding.root</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 鞋子数据更新的通知</span><br><span class="line">     */</span><br><span class="line">    private fun onSubscribeUi(adapter: ShoeAdapter) &#123;</span><br><span class="line">        viewModel.shoes.observe(viewLifecycleOwner, Observer &#123;</span><br><span class="line">            if (it != null) &#123;</span><br><span class="line">                adapter.submitList(it)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 onSubscribeUi 方法中，我们使用 ShoeModel 的 LiveData 进行了观察通知，当鞋子集合更新的时候，会更新到当前 RecyclerView 中的适配器。</p>
+<p>布局文件 <code>fragment_shoe.xml</code> 很简单，虽使用了 Data Binding，但是没有变量，且只有一个 RecyclerView，这里不再赘述。ShoeAdapter 的实现同样简单，感兴趣的可以查看源码，这里同样不再赘述。</p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>一个例子并不能展现所有的关于 LiveData 和 ViewModel 的内容。LiveData 和 ViewModel 仍有一些知识需要我们注意。</p>
+<h4 id="LiveData-数据变换"><a href="#LiveData-数据变换" class="headerlink" title="LiveData 数据变换"></a>LiveData 数据变换</h4><p>LiveData 中数据变换方法有 map() 和 switchMap()，关于 switchMap()，我在上面实战的 ShoeModel 已经实践过了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 本地数据仓库</span><br><span class="line">class ShoeRepository private constructor(private val shoeDao: ShoeDao) &#123;</span><br><span class="line"></span><br><span class="line">    fun getAllShoes() = shoeDao.getAllShoes()</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 通过品牌查询鞋子 返回 LiveData&lt;List&lt;Shoe&gt;&gt;</span><br><span class="line">     */</span><br><span class="line">    fun getShoesByBrand(brand:String) = shoeDao.findShoeByBrand(brand)</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 插入鞋子的集合 返回 LiveData&lt;List&lt;Shoe&gt;&gt;</span><br><span class="line">     */</span><br><span class="line">    fun insertShoes(shoes: List&lt;Shoe&gt;) = shoeDao.insertShoes(shoes)</span><br><span class="line"></span><br><span class="line">    // ... 单例省略</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ShoeModel constructor(shoeRepository: ShoeRepository) : ViewModel() &#123;</span><br><span class="line"></span><br><span class="line">    // 品牌的观察对象 默认观察所有的品牌</span><br><span class="line">    private val brand = MutableLiveData&lt;String&gt;().apply &#123;</span><br><span class="line">        value = ALL</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 鞋子集合的观察类</span><br><span class="line">    val shoes: LiveData&lt;List&lt;Shoe&gt;&gt; = brand.switchMap &#123;</span><br><span class="line">        // Room数据库查询，只要知道返回的是LiveData&lt;List&lt;Shoe&gt;&gt;即可</span><br><span class="line">        if (it == ALL) &#123;</span><br><span class="line">            shoeRepository.getAllShoes()</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            shoeRepository.getShoesByBrand(it)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>map() 的使用我们借用官方的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val userLiveData: LiveData&lt;User&gt; = UserLiveData()</span><br><span class="line">val userName: LiveData&lt;String&gt; = Transformations.map(userLiveData) &#123;</span><br><span class="line">    user -&gt; &quot;$&#123;user.name&#125; $&#123;user.lastName&#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，map() 同样可以实现将 A 变成 B，那么 switchMap() 和 map() 的区别是什么？map() 中只有一个 LiveData<a>，他是在 LiveData<a> 发送数据的时候把 A 变成 B，而 switchMap() 中同时存在 LiveData<a> 和 LiveData<b>，LiveData<a> 更新之后通知 LiveData<b> 更新。</b></a></b></a></a></a></p>
+<h4 id="LiveData-如何共享数据"><a href="#LiveData-如何共享数据" class="headerlink" title="LiveData 如何共享数据"></a>LiveData 如何共享数据</h4><p>假设我们有这样的需求：注册页需要记录信息，注册完成跳转到登录页，并将账号和密码显示在登录页。这种情况下，我们可以定义一个类然后继承 LiveData，并使用单例模式即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 登录信息</span><br><span class="line">data class LoginInfo constructor(val account:String, val pwd:String, val email:String)</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 自定义单例LiveData</span><br><span class="line"> */</span><br><span class="line">class LoginLiveData:LiveData&lt;LoginInfo&gt;() &#123;</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line">        private lateinit var sInstance: LoginLiveData</span><br><span class="line"></span><br><span class="line">        @MainThread</span><br><span class="line">        fun get(): LoginLiveData &#123;</span><br><span class="line">            sInstance = if (::sInstance.isInitialized) sInstance else LoginLiveData()</span><br><span class="line">            return sInstance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要实例的时候用单例创建即可。</p>
+<h4 id="使用-ViewModel-在同一个-Activity-中的-Fragment-之间共享数据"><a href="#使用-ViewModel-在同一个-Activity-中的-Fragment-之间共享数据" class="headerlink" title="使用 ViewModel 在同一个 Activity 中的 Fragment 之间共享数据"></a>使用 ViewModel 在同一个 Activity 中的 Fragment 之间共享数据</h4><p>想要利用 ViewModel 实现 Fragment 之间数据共享，前提是 Fragment 中的 FragmentActivity 得相同，这里直接贴上官方的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class SharedViewModel : ViewModel() &#123;</span><br><span class="line">    val selected = MutableLiveData&lt;Item&gt;()</span><br><span class="line"></span><br><span class="line">    fun select(item: Item) &#123;</span><br><span class="line">        selected.value = item</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MasterFragment : Fragment() &#123;</span><br><span class="line"></span><br><span class="line">    private lateinit var itemSelector: Selector</span><br><span class="line"></span><br><span class="line">    private lateinit var model: SharedViewModel</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        model = activity?.run &#123;</span><br><span class="line">            ViewModelProviders.of(this).get(SharedViewModel::class.java)</span><br><span class="line">        &#125; ?: throw Exception(&quot;Invalid Activity&quot;)</span><br><span class="line">        itemSelector.setOnClickListener &#123; item -&gt;</span><br><span class="line">            // Update the UI</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DetailFragment : Fragment() &#123;</span><br><span class="line"></span><br><span class="line">    private lateinit var model: SharedViewModel</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        model = activity?.run &#123;</span><br><span class="line">            ViewModelProviders.of(this).get(SharedViewModel::class.java)</span><br><span class="line">        &#125; ?: throw Exception(&quot;Invalid Activity&quot;)</span><br><span class="line">        model.selected.observe(this, Observer&lt;Item&gt; &#123; item -&gt;</span><br><span class="line">            // Update the UI</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="viewmodel-livedata-chapter-1/img3.png" alt></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\20\Android-Jetpack组件：Navigation\" rel="bookmark">Android-Jetpack组件：Navigation</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\21\Android-Jetpack组件：DataBinding\" rel="bookmark">Android-Jetpack组件：DataBinding</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\24\Android-Jetpack组件：Paging\" rel="bookmark">Android-Jetpack组件：Paging</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\23\Android-Jetpack组件：Room\" rel="bookmark">Android-Jetpack组件：Room</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\25\Android-Jetpack组件：WorkManager\" rel="bookmark">Android-Jetpack组件：WorkManager</a></div>
+      
+    </li>
+  
+  </ul>
+
+        
+      
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.png" alt="彭真进 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.png" alt="彭真进 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>彭真进</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/" title="Android-Jetpack组件：ViewModel和LiveData">http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            
+              <a href="/tags/Jetpack/" rel="tag"><i class="fa fa-tag"></i> Jetpack</a>
+            
+              <a href="/tags/ViewModel/" rel="tag"><i class="fa fa-tag"></i> ViewModel</a>
+            
+              <a href="/tags/LiveData/" rel="tag"><i class="fa fa-tag"></i> LiveData</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/05/21/Android-Jetpack组件：DataBinding/" rel="next" title="Android-Jetpack组件：DataBinding">
+                  <i class="fa fa-chevron-left"></i> Android-Jetpack组件：DataBinding
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/05/23/Android-Jetpack组件：Room/" rel="prev" title="Android-Jetpack组件：Room">
+                  Android-Jetpack组件：Room <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LiveData"><span class="nav-number">1.</span> <span class="nav-text">LiveData</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方式"><span class="nav-number">1.2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-number">1.3.</span> <span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewModel"><span class="nav-number">2.</span> <span class="nav-text">ViewModel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍-1"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法"><span class="nav-number">2.2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实战"><span class="nav-number">2.3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步：添加依赖"><span class="nav-number">2.3.1.</span> <span class="nav-text">第一步：添加依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步：创建-ShoeModel"><span class="nav-number">2.3.2.</span> <span class="nav-text">第二步：创建 ShoeModel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三步：获取-ViewModel"><span class="nav-number">2.3.3.</span> <span class="nav-text">第三步：获取 ViewModel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第四步：使用-ViewModel"><span class="nav-number">2.3.4.</span> <span class="nav-text">第四步：使用 ViewModel</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">3.</span> <span class="nav-text">更多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LiveData-数据变换"><span class="nav-number">3.1.</span> <span class="nav-text">LiveData 数据变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LiveData-如何共享数据"><span class="nav-number">3.2.</span> <span class="nav-text">LiveData 如何共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-ViewModel-在同一个-Activity-中的-Fragment-之间共享数据"><span class="nav-number">3.3.</span> <span class="nav-text">使用 ViewModel 在同一个 Activity 中的 Fragment 之间共享数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="彭真进">
+  <p class="site-author-name" itemprop="name">彭真进</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/pengzhenjin" title="GitHub &rarr; https://github.com/pengzhenjin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:562260994@qq.com" title="E-Mail &rarr; mailto:562260994@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn" title="https://hexo.io/zh-cn" rel="noopener" target="_blank">Hexo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/docs" title="https://theme-next.org/docs" rel="noopener" target="_blank">NexT</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭真进 版权所有</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">417k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">6:19</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'a0aefd8233242f4272c5',
+      clientSecret: '89cbd8c8415d03a931cdeba5a9146e38803a1ad7',
+      repo: 'pengzhenjin.github.io',
+      owner: 'pengzhenjin',
+      admin: ['pengzhenjin'],
+      id: '801aa5e5cd423f574a8fbda4adea7e83',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>

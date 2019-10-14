@@ -41,6 +41,164 @@
   </entry>
   
   <entry>
+    <title>Android-Jetpack组件：WorkManager</title>
+    <link href="http://pengzhenjin.top/2019/05/25/Android-Jetpack%E7%BB%84%E4%BB%B6%EF%BC%9AWorkManager/"/>
+    <id>http://pengzhenjin.top/2019/05/25/Android-Jetpack组件：WorkManager/</id>
+    <published>2019-05-24T16:00:00.000Z</published>
+    <updated>2019-10-14T11:26:17.488Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;官方文档：&lt;a href=&quot;https://developer.android.com/topic/libraries/architecture/workmanager&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WorkManager&lt;/a&gt;&lt;br&gt;谷歌实验室：&lt;a href=&quot;https://codelabs.developers.google.com/codelabs/android-workmanager-kt/#0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方教程&lt;/a&gt;&lt;br&gt;官方案例：&lt;a href=&quot;https://github.com/googlecodelabs/android-workmanager&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;android-workmanager&lt;/a&gt;&lt;br&gt;WorkManger介绍视频：&lt;a href=&quot;https://www.bilibili.com/video/av56276889&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;中文官方介绍视频&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;1. 定义&lt;/strong&gt;&lt;br&gt;WorkManager 是用来执行后台任务的，正如官方介绍：&lt;/p&gt;&lt;div class=&quot;note default&quot;&gt;
+            &lt;p&gt;WorkManager, a compatible, flexible and simple library for deferrable background work.&lt;br&gt;WorkManger是一个可兼容、灵活和简单的延迟后台任务。&lt;/p&gt;
+          &lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://pengzhenjin.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://pengzhenjin.top/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="http://pengzhenjin.top/tags/Jetpack/"/>
+    
+      <category term="WorkManager" scheme="http://pengzhenjin.top/tags/WorkManager/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-Jetpack组件：Paging</title>
+    <link href="http://pengzhenjin.top/2019/05/24/Android-Jetpack%E7%BB%84%E4%BB%B6%EF%BC%9APaging/"/>
+    <id>http://pengzhenjin.top/2019/05/24/Android-Jetpack组件：Paging/</id>
+    <published>2019-05-23T16:00:00.000Z</published>
+    <updated>2019-10-14T10:52:13.363Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;官方文档：&lt;a href=&quot;https://developer.android.com/topic/libraries/architecture/paging&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Paging&lt;/a&gt;&lt;br&gt;谷歌实验室：官方教程&lt;br&gt;官方Demo：&lt;a href=&quot;https://github.com/android/architecture-components-samples/tree/master/PagingWithNetworkSample&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网络方式&lt;/a&gt;，&lt;a href=&quot;https://github.com/android/architecture-components-samples/tree/master/PagingSample&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;数据库方式&lt;/a&gt;&lt;/p&gt;&lt;p&gt;谷歌官方的介绍：&lt;/p&gt;&lt;div class=&quot;note default&quot;&gt;
+            &lt;p&gt;The Paging Library helps you load and display small chunks of data at a time. Loading partial data on demand reduces usage of network bandwidth and system resources.&lt;/p&gt;
+          &lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://pengzhenjin.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://pengzhenjin.top/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="http://pengzhenjin.top/tags/Jetpack/"/>
+    
+      <category term="Paging" scheme="http://pengzhenjin.top/tags/Paging/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-Jetpack组件：Room</title>
+    <link href="http://pengzhenjin.top/2019/05/23/Android-Jetpack%E7%BB%84%E4%BB%B6%EF%BC%9ARoom/"/>
+    <id>http://pengzhenjin.top/2019/05/23/Android-Jetpack组件：Room/</id>
+    <published>2019-05-22T16:00:00.000Z</published>
+    <updated>2019-10-14T06:56:09.614Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;官方文档：&lt;a href=&quot;https://developer.android.com/topic/libraries/architecture/room&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Room&lt;/a&gt;&lt;br&gt;谷歌实验室：&lt;a href=&quot;https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方教程&lt;/a&gt;&lt;br&gt;SQL语法：&lt;a href=&quot;https://www.runoob.com/sqlite/sqlite-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SQLite教程&lt;/a&gt;&lt;/p&gt;&lt;p&gt;谷歌官方的介绍：&lt;/p&gt;&lt;div class=&quot;note default&quot;&gt;
+            &lt;p&gt;The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.&lt;/p&gt;
+          &lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://pengzhenjin.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://pengzhenjin.top/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="http://pengzhenjin.top/tags/Jetpack/"/>
+    
+      <category term="Room" scheme="http://pengzhenjin.top/tags/Room/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-Jetpack组件：ViewModel和LiveData</title>
+    <link href="http://pengzhenjin.top/2019/05/22/Android-Jetpack%E7%BB%84%E4%BB%B6%EF%BC%9AViewModel%E5%92%8CLiveData/"/>
+    <id>http://pengzhenjin.top/2019/05/22/Android-Jetpack组件：ViewModel和LiveData/</id>
+    <published>2019-05-21T16:00:00.000Z</published>
+    <updated>2019-10-13T12:32:13.311Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;LiveData&quot;&gt;&lt;a href=&quot;#LiveData&quot; class=&quot;headerlink&quot; title=&quot;LiveData&quot;&gt;&lt;/a&gt;LiveData&lt;/h3&gt;&lt;p&gt;官方文档：&lt;a href=&quot;https://developer.android.google.cn/topic/libraries/architecture/livedata.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LiveData&lt;/a&gt;&lt;/p&gt;&lt;p&gt;在讲 LiveData 之前，我们先看看 LiveData 和 ViewModel 的作用：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;viewmodel-livedata-chapter-1/img1.png&quot; alt&gt;&lt;/p&gt;&lt;p&gt;从这一张图，我们可以看出 ViewModel 和 LiveData 在整个MVVM架构中担当数据驱动的职责，这也是 MVVM 模式中 ViewModel 层的作用。&lt;/p&gt;&lt;h4 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://pengzhenjin.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://pengzhenjin.top/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="http://pengzhenjin.top/tags/Jetpack/"/>
+    
+      <category term="ViewModel" scheme="http://pengzhenjin.top/tags/ViewModel/"/>
+    
+      <category term="LiveData" scheme="http://pengzhenjin.top/tags/LiveData/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-Jetpack组件：DataBinding</title>
+    <link href="http://pengzhenjin.top/2019/05/21/Android-Jetpack%E7%BB%84%E4%BB%B6%EF%BC%9ADataBinding/"/>
+    <id>http://pengzhenjin.top/2019/05/21/Android-Jetpack组件：DataBinding/</id>
+    <published>2019-05-20T16:00:00.000Z</published>
+    <updated>2019-10-11T10:16:50.778Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;h4 id=&quot;MVVM-介绍&quot;&gt;&lt;a href=&quot;#MVVM-介绍&quot; class=&quot;headerlink&quot; title=&quot;MVVM 介绍&quot;&gt;&lt;/a&gt;MVVM 介绍&lt;/h4&gt;&lt;p&gt;MVVM（全称 Model-View-ViewModel）同 MVC 和 MVP 一样，是逻辑分层解偶的模式（如果你还不了解 MVC 和 MVP，建议还是提前了解一下）。&lt;/p&gt;&lt;p&gt;结构图：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;databinding-chapter-1/img1.png&quot; alt&gt;&lt;/p&gt;&lt;p&gt;从上图我们可以了解到MVVM的三要素，他们分别是：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;View 层：xml、Activity、Fragment、Adapter 和 View 等&lt;/li&gt;
+&lt;li&gt;Model 层：数据源（本地数据和网络数据等）&lt;/li&gt;
+&lt;li&gt;ViewModel 层：View 层处理数据以及逻辑处理&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://pengzhenjin.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://pengzhenjin.top/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="http://pengzhenjin.top/tags/Jetpack/"/>
+    
+      <category term="DataBinding" scheme="http://pengzhenjin.top/tags/DataBinding/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-Jetpack组件：Navigation</title>
+    <link href="http://pengzhenjin.top/2019/05/20/Android-Jetpack%E7%BB%84%E4%BB%B6%EF%BC%9ANavigation/"/>
+    <id>http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/</id>
+    <published>2019-05-19T16:00:00.000Z</published>
+    <updated>2019-10-11T09:15:53.124Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;h4 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h4&gt;&lt;p&gt;Navigation 是什么呢？谷歌的介绍视频上说：&lt;/p&gt;&lt;div class=&quot;note default&quot;&gt;
+            &lt;p&gt;Navigation 是一个可简化Android导航的库和插件&lt;/p&gt;
+          &lt;/div&gt;&lt;p&gt;更确切的来说，Navigation 是用来管理 Fragment 的切换，并且可以通过可视化的方式，看见 App 的交互流程。这完美的契合了 Jake Wharton 大神单 Activity 的建议。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://pengzhenjin.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://pengzhenjin.top/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="http://pengzhenjin.top/tags/Jetpack/"/>
+    
+      <category term="Navigation" scheme="http://pengzhenjin.top/tags/Navigation/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java队列详解</title>
     <link href="http://pengzhenjin.top/2018/10/18/Java%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/"/>
     <id>http://pengzhenjin.top/2018/10/18/Java队列详解/</id>
@@ -377,106 +535,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;配置-Git&quot;&gt;&lt;a href=&quot;#配置-Git&quot; class=&quot;headerlink&quot; title=&quot;配置 Git&quot;&gt;&lt;/a&gt;配置 Git&lt;/h3&gt;&lt;p&gt;到目前为止，我们已经阐述了 Git 基本的运作机制和使用方式，介绍了许多 Git 提供的工具来帮助你简单且有效地使用它。 在本章，我们将演示如何借助 Git 的一些重要的配置方法和钩子机制，来满足自定义的需求。 通过这些工具，它会和你、你的公司或你的团队配合得天衣无缝。&lt;/p&gt;&lt;p&gt;你在 Git 基础 中看到，可以用 git config 配置 Git。 首先要做的事情就是设置你的名字和邮件地址：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="http://pengzhenjin.top/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://pengzhenjin.top/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git：工具</title>
-    <link href="http://pengzhenjin.top/2018/06/10/Git%EF%BC%9A%E5%B7%A5%E5%85%B7/"/>
-    <id>http://pengzhenjin.top/2018/06/10/Git：工具/</id>
-    <published>2018-06-09T16:00:00.000Z</published>
-    <updated>2019-08-29T10:52:06.577Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在，你已经学习了管理或者维护 Git 仓库、实现代码控制所需的大多数日常命令和工作流程。 你已经尝试了跟踪和提交文件的基本操作，并且发挥了暂存区和轻量级的分支及合并的威力。&lt;/p&gt;&lt;p&gt;接下来你将学习一些 Git 的强大功能，这些功能你可能并不会在日常操作中使用，但在某些时候你可能会需要。&lt;/p&gt;&lt;h3 id=&quot;选择修订版本&quot;&gt;&lt;a href=&quot;#选择修订版本&quot; class=&quot;headerlink&quot; title=&quot;选择修订版本&quot;&gt;&lt;/a&gt;选择修订版本&lt;/h3&gt;&lt;p&gt;Git 允许你通过几种方法来指明特定的或者一定范围内的提交。 了解它们并不是必需的，但是了解一下总没坏处。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="http://pengzhenjin.top/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://pengzhenjin.top/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git：分布式</title>
-    <link href="http://pengzhenjin.top/2018/06/09/Git%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    <id>http://pengzhenjin.top/2018/06/09/Git：分布式/</id>
-    <published>2018-06-08T16:00:00.000Z</published>
-    <updated>2019-08-29T02:13:44.180Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;你现在拥有了一个远程 Git 版本库，能为所有开发者共享代码提供服务，在一个本地工作流程下，你也已经熟悉了基本 Git 命令。你现在可以学习如何利用 Git 提供的一些分布式工作流程了。&lt;/p&gt;&lt;p&gt;这一章中，你将会学习如何作为贡献者或整合者，在一个分布式协作的环境中使用 Git。 你会学习为一个项目成功地贡献代码，并接触一些最佳实践方式，让你和项目的维护者能轻松地完成这个过程。另外，你也会学到如何管理有很多开发者提交贡献的项目。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="http://pengzhenjin.top/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://pengzhenjin.top/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git：服务器</title>
-    <link href="http://pengzhenjin.top/2018/06/08/Git%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <id>http://pengzhenjin.top/2018/06/08/Git：服务器/</id>
-    <published>2018-06-07T16:00:00.000Z</published>
-    <updated>2019-08-28T14:17:00.841Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;到目前为止，你应该已经有办法使用 Git 来完成日常工作。 然而，为了使用 Git 协作功能，你还需要有远程的 Git 仓库。 尽管在技术上你可以从个人仓库进行推送（push）和拉取（pull）来修改内容，但不鼓励使用这种方法，因为一不留心就很容易弄混其他人的进度。 此外，你希望你的合作者们即使在你的电脑未联机时亦能存取仓库 — 拥有一个更可靠的公用仓库十分有用。 因此，与他人合作的最佳方法即是建立一个你与合作者们都有权利访问，且可从那里推送和拉取资料的共用仓库。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="http://pengzhenjin.top/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://pengzhenjin.top/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git：分支</title>
-    <link href="http://pengzhenjin.top/2018/06/07/Git%EF%BC%9A%E5%88%86%E6%94%AF/"/>
-    <id>http://pengzhenjin.top/2018/06/07/Git：分支/</id>
-    <published>2018-06-06T16:00:00.000Z</published>
-    <updated>2019-08-28T05:02:39.186Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;几乎所有的版本控制系统都以某种形式支持分支。 使用分支意味着你可以把你的工作从开发主线上分离开来，以免影响开发主线。 在很多版本控制系统中，这是一个略微低效的过程——常常需要完全创建一个源代码目录的副本。对于大项目来说，这样的过程会耗费很多时间。&lt;/p&gt;&lt;p&gt;有人把 Git 的分支模型称为它的“必杀技特性”，也正因为这一特性，使得 Git 从众多版本控制系统中脱颖而出。 为何 Git 的分支模型如此出众呢？ Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 与许多其它版本控制系统不同，Git 鼓励在工作流程中频繁地使用分支与合并，哪怕一天之内进行许多次。 理解和精通这一特性，你便会意识到 Git 是如此的强大而又独特，并且从此真正改变你的开发方式。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="http://pengzhenjin.top/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://pengzhenjin.top/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git：基础</title>
-    <link href="http://pengzhenjin.top/2018/06/06/Git%EF%BC%9A%E5%9F%BA%E7%A1%80/"/>
-    <id>http://pengzhenjin.top/2018/06/06/Git：基础/</id>
-    <published>2018-06-05T16:00:00.000Z</published>
-    <updated>2019-08-31T02:48:41.100Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;p&gt;在你开始使用 Git 前，需要将它安装在你的计算机上。 即便已经安装，最好将它升级到最新的版本。 你可以通过软件包或者其它安装程序来安装，或者下载源码编译安装。&lt;/p&gt;&lt;h4 id=&quot;在-Linux-上安装&quot;&gt;&lt;a href=&quot;#在-Linux-上安装&quot; class=&quot;headerlink&quot; title=&quot;在 Linux 上安装&quot;&gt;&lt;/a&gt;在 Linux 上安装&lt;/h4&gt;&lt;p&gt;如果你想在 Linux 上用二进制安装程序来安装 Git，可以使用发行版包含的基础软件包管理工具来安装。 如果以 Fedora 上为例，你可以使用 yum：&lt;/p&gt;
     
     </summary>
     

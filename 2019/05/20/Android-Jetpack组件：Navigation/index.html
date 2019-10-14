@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-me.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-me.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="简介定义Navigation 是什么呢？谷歌的介绍视频上说：             Navigation 是一个可简化Android导航的库和插件           更确切的来说，Navigation 是用来管理 Fragment 的切换，并且可以通过可视化的方式，看见 App 的交互流程。这完美的契合了 Jake Wharton 大神单 Activity 的建议。">
+<meta name="keywords" content="Android,Jetpack,Navigation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Jetpack组件：Navigation">
+<meta property="og:url" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/index.html">
+<meta property="og:site_name" content="彭真进的博客">
+<meta property="og:description" content="简介定义Navigation 是什么呢？谷歌的介绍视频上说：             Navigation 是一个可简化Android导航的库和插件           更确切的来说，Navigation 是用来管理 Fragment 的切换，并且可以通过可视化的方式，看见 App 的交互流程。这完美的契合了 Jake Wharton 大神单 Activity 的建议。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img1.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img2.jpeg">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img3.jpeg">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img4.png">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img5.jpeg">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img6.jpeg">
+<meta property="og:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img7.png">
+<meta property="og:updated_time" content="2019-10-11T09:15:53.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Jetpack组件：Navigation">
+<meta name="twitter:description" content="简介定义Navigation 是什么呢？谷歌的介绍视频上说：             Navigation 是一个可简化Android导航的库和插件           更确切的来说，Navigation 是用来管理 Fragment 的切换，并且可以通过可视化的方式，看见 App 的交互流程。这完美的契合了 Jake Wharton 大神单 Activity 的建议。">
+<meta name="twitter:image" content="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/navigation-chapter-1/img1.png">
+  <link rel="canonical" href="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Android-Jetpack组件：Navigation | 彭真进的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ede0ba70e7eb2eb800e94196368893eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭真进的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">业精于勤荒于嬉，行成于思毁于随</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭真进">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭真进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Android-Jetpack组件：Navigation
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-20T00:00:00+08:00">2019-05-20</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>8.9k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>8 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>Navigation 是什么呢？谷歌的介绍视频上说：</p><div class="note default">
+            <p>Navigation 是一个可简化Android导航的库和插件</p>
+          </div><p>更确切的来说，Navigation 是用来管理 Fragment 的切换，并且可以通过可视化的方式，看见 App 的交互流程。这完美的契合了 Jake Wharton 大神单 Activity 的建议。</p><a id="more"></a>
+
+
+
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>处理 Fragment 的切换（上文已说过）</li>
+<li>默认情况下正确处理 Fragment 的前进和后退</li>
+<li>为过渡和动画提供标准化的资源</li>
+<li>实现和处理深层连接</li>
+<li>可以绑定 Toolbar、BottomNavigationView 和 ActionBar 等</li>
+<li>SafeArgs（Gradle 插件） 数据传递时提供类型安全性</li>
+<li>ViewModel 支持</li>
+</ul>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>如果想要进行下面的学习，你需要 Android studio 3.2 或者更高的 Android studio 版本。</p>
+<h4 id="学习方式"><a href="#学习方式" class="headerlink" title="学习方式"></a>学习方式</h4><p>最好的学习方式仍然是通过官方文档，下面是官方的学习地址：<br>谷歌官方教程：<a href="https://codelabs.developers.google.com/codelabs/android-navigation/#0" target="_blank" rel="noopener">Navigation Codelab</a><br>谷歌官方文档：<a href="https://developer.android.com/guide/navigation" target="_blank" rel="noopener">Navigation</a><br>官方Demo：<a href="https://github.com/googlecodelabs/android-navigation" target="_blank" rel="noopener">Demo 地址</a></p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>在实战之前，我们先来了解一下 Navigation 中最关键的三要素，他们是：</p>
+<table>
+<thead>
+<tr>
+<th>名词</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigation Graph(New XML resource)</td>
+<td>如我们的第一张图所示，这是一个新的资源文件，用户在可视化界面可以看出他能够到达的 Destination(用户能够到达的屏幕界面)，以及流程关系。</td>
+</tr>
+<tr>
+<td>NavHostFragment(Layout XML view)</td>
+<td>当前 Fragment 的容器</td>
+</tr>
+<tr>
+<td>NavController(Kotlin/Java object)</td>
+<td>导航的控制者</td>
+</tr>
+</tbody></table>
+<p>可能我这么解释还是有点抽象，做一个不是那么恰当的比喻，我们可以将 Navigation Graph 看作一个地图，NavHostFragment 看作一个车，以及把 NavController 看作车中的方向盘，Navigation Graph 中可以看出各个地点（Destination）和通往各个地点的路径，NavHostFragment 可以到达地图中的各个目的地，但是决定到什么目的地还是方向盘 NavController，虽然它取决于开车人（用户）。</p>
+<h4 id="第一步-添加依赖"><a href="#第一步-添加依赖" class="headerlink" title="第一步 添加依赖"></a>第一步 添加依赖</h4><p>模块层的 <code>build.gradle</code> 文件需要添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ext.navigationVersion = &quot;2.0.0&quot;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    //... </span><br><span class="line">    implementation &quot;androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion&quot;</span><br><span class="line">    implementation &quot;androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你要使用 <code>SafeArgs</code> 插件，还要在项目目录下的 <code>build.gradle</code> 文件添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext.navigationVersion = &quot;2.0.0&quot;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &quot;androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以及模块下面的 <code>build.gradle</code> 文件添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;kotlin-android-extensions&apos;</span><br><span class="line">apply plugin: &apos;androidx.navigation.safeargs&apos;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步-创建-navigation-导航"><a href="#第二步-创建-navigation-导航" class="headerlink" title="第二步 创建 navigation 导航"></a>第二步 创建 navigation 导航</h4><ol>
+<li>创建基础目录：资源文件res目录下创建navigation目录 -&gt; 右击navigation目录New一个Navigation resource file</li>
+<li>创建一个Destination，如果说navigation是我们的导航工具，Destination是我们的目的地，在此之前，我已经写好了一个WelcomeFragment、LoginFragment和RegisterFragment，添加Destination的操作完成后如下所示：</li>
+</ol>
+<p><img src="navigation-chapter-1/img1.png" alt></p>
+<p>除了可视化界面之外，我们仍然有必要看一下里面的内容组成，<code>login_navigation.xml</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigation</span><br><span class="line">    ...</span><br><span class="line">    android:id=&quot;@+id/login_navigation&quot;</span><br><span class="line">    app:startDestination=&quot;@id/welcome&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/login&quot;</span><br><span class="line">        android:name=&quot;com.joe.jetpackdemo.ui.fragment.login.LoginFragment&quot;</span><br><span class="line">        android:label=&quot;LoginFragment&quot;</span><br><span class="line">        tools:layout=&quot;@layout/fragment_login&quot;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/welcome&quot;</span><br><span class="line">        android:name=&quot;com.joe.jetpackdemo.ui.fragment.login.WelcomeFragment&quot;</span><br><span class="line">        android:label=&quot;LoginFragment&quot;</span><br><span class="line">        tools:layout=&quot;@layout/fragment_welcome&quot;&gt;</span><br><span class="line">        &lt;action</span><br><span class="line">            .../&gt;</span><br><span class="line">        &lt;action</span><br><span class="line">            .../&gt;</span><br><span class="line">    &lt;/fragment&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/register&quot;</span><br><span class="line">        android:name=&quot;com.joe.jetpackdemo.ui.fragment.login.RegisterFragment&quot;</span><br><span class="line">        android:label=&quot;LoginFragment&quot;</span><br><span class="line">        tools:layout=&quot;@layout/fragment_register&quot;</span><br><span class="line">        &gt;</span><br><span class="line"></span><br><span class="line">        &lt;argument</span><br><span class="line">            .../&gt;</span><br><span class="line">    &lt;/fragment&gt;</span><br><span class="line">&lt;/navigation&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我在这里省略了一些不必要的代码。让我们看一下 navigation 标签的属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>app:startDestination</td>
+<td>默认的起始位置</td>
+</tr>
+</tbody></table>
+<h4 id="第三步-建立-NavHostFragment"><a href="#第三步-建立-NavHostFragment" class="headerlink" title="第三步 建立 NavHostFragment"></a>第三步 建立 NavHostFragment</h4><p>我们创建一个新的 <code>LoginActivity</code> ，在 <code>activity_login.xml</code> 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;androidx.constraintlayout.widget.ConstraintLayout</span><br><span class="line">    ...&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/my_nav_host_fragment&quot;</span><br><span class="line">        android:name=&quot;androidx.navigation.fragment.NavHostFragment&quot;</span><br><span class="line">        app:navGraph=&quot;@navigation/login_navigation&quot;</span><br><span class="line">        app:defaultNavHost=&quot;true&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>有几个属性需要解释一下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:name</td>
+<td>值必须是 androidx.navigation.fragment.NavHostFragment，声明这是一个 NavHostFragment</td>
+</tr>
+<tr>
+<td>app:navGraph</td>
+<td>存放的是第二步建好导航的资源文件，也就是确定了 Navigation Graph</td>
+</tr>
+<tr>
+<td>app:defaultNavHost=”true”</td>
+<td>与系统的返回按钮相关联</td>
+</tr>
+</tbody></table>
+<h4 id="第四步-界面跳转、参数传递和动画"><a href="#第四步-界面跳转、参数传递和动画" class="headerlink" title="第四步 界面跳转、参数传递和动画"></a>第四步 界面跳转、参数传递和动画</h4><p>在 WelcomeFragment 中，点击登录和注册按钮可以分别跳转到 LoginFragment 和 RegisterFragment 中。</p>
+<p><img src="navigation-chapter-1/img2.jpeg" alt></p>
+<p>这里我使用了两种方式实现：<br><strong>方式一 利用 ID 导航</strong><br>目标：WelcomeFragment 携带 key 为 name 的数据跳转到 LoginFragment，LoginFragment 接收后显示。<br>Have a account ? Login 按钮的点击事件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">btnLogin.setOnClickListener &#123;</span><br><span class="line">            // 设置动画参数</span><br><span class="line">            val navOption = navOptions &#123;</span><br><span class="line">                anim &#123;</span><br><span class="line">                    enter = R.anim.slide_in_right</span><br><span class="line">                    exit = R.anim.slide_out_left</span><br><span class="line">                    popEnter = R.anim.slide_in_left</span><br><span class="line">                    popExit = R.anim.slide_out_right</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            // 参数设置</span><br><span class="line">            val bundle = Bundle()</span><br><span class="line">            bundle.putString(&quot;name&quot;,&quot;TeaOf&quot;)</span><br><span class="line">            findNavController().navigate(R.id.login, bundle,navOption)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后续 LoginFragment 的接收代码比较简单，直接获取 Fragment 中的 Bundle 即可，这里不再出示代码。最后的效果：</p>
+<p><img src="navigation-chapter-1/img3.jpeg" alt></p>
+<p><strong>方式二 利用 Safe Args</strong><br>目标：WelcomeFragment 通过 Safe Args 将数据传到 RegisterFragment，RegisterFragment 接收后显示。<br>再看一下已经展示过的 <code>login_navigation.xml</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigation</span><br><span class="line">    ...&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        ...</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/welcome&quot;</span><br><span class="line">        &gt;</span><br><span class="line">        &lt;action</span><br><span class="line">            android:id=&quot;@+id/action_welcome_to_login&quot;</span><br><span class="line">            app:destination=&quot;@id/login&quot;/&gt;</span><br><span class="line">        &lt;action</span><br><span class="line">            android:id=&quot;@+id/action_welcome_to_register&quot;</span><br><span class="line">            app:enterAnim=&quot;@anim/slide_in_right&quot;</span><br><span class="line">            app:exitAnim=&quot;@anim/slide_out_left&quot;</span><br><span class="line">            app:popEnterAnim=&quot;@anim/slide_in_left&quot;</span><br><span class="line">            app:popExitAnim=&quot;@anim/slide_out_right&quot;</span><br><span class="line">            app:destination=&quot;@id/register&quot;/&gt;</span><br><span class="line">    &lt;/fragment&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/register&quot;</span><br><span class="line">        ...</span><br><span class="line">        &gt;</span><br><span class="line"></span><br><span class="line">        &lt;argument</span><br><span class="line">            android:name=&quot;EMAIL&quot;</span><br><span class="line">            android:defaultValue=&quot;2005@qq.com&quot;</span><br><span class="line">            app:argType=&quot;string&quot;/&gt;</span><br><span class="line">    &lt;/fragment&gt;</span><br><span class="line">&lt;/navigation&gt;</span><br></pre></td></tr></table></figure>
+
+<p>细心的同学可能已经观察到 navigation 目录下的 <code>login_navigation.xml</code> 资源文件中的 action 标签 和 argument 标签，这里需要解释一下：<br><strong>action 标签</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>app:destination</td>
+<td>跳转完成到达的 fragment 的 id</td>
+</tr>
+<tr>
+<td>app:popUpTo</td>
+<td>将fragment从栈中弹出，直到某个 id 的 fragment</td>
+</tr>
+</tbody></table>
+<p><strong>argument 标签</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:name</td>
+<td>标签名字</td>
+</tr>
+<tr>
+<td>app:argType</td>
+<td>标签的类型</td>
+</tr>
+<tr>
+<td>android:defaultValue</td>
+<td>默认值</td>
+</tr>
+</tbody></table>
+<p>点击 Android studio 中的 Make Project 按钮，可以发现系统为我们生成了两个类：</p>
+<p><img src="navigation-chapter-1/img4.png" alt></p>
+<p>WelcomeFragment 中的 JOIN US 按钮点击事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">btnRegister.setOnClickListener &#123;</span><br><span class="line">            val action = WelcomeFragmentDirections</span><br><span class="line">                .actionWelcomeToRegister()</span><br><span class="line">                .setEMAIL(&quot;TeaOf1995@Gamil.com&quot;)</span><br><span class="line">            findNavController().navigate(action)</span><br></pre></td></tr></table></figure>
+
+<p>RegisterFragment 中的接收：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">override fun onViewCreated(view: View, savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onViewCreated(view, savedInstanceState)</span><br><span class="line"></span><br><span class="line">        // ...</span><br><span class="line">        val safeArgs:RegisterFragmentArgs by navArgs()</span><br><span class="line">        val email = safeArgs.email</span><br><span class="line">        mEmailEt.setText(email)</span><br></pre></td></tr></table></figure>
+
+<p>以及效果：</p>
+<p><img src="navigation-chapter-1/img5.jpeg" alt></p>
+<p>需要提及的是，如果不用 Safe Args，action 可以由 Navigation.createNavigateOnClickListener(R.id.next_action, null) 方式生成，感兴趣的同学可以自行编写。</p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>Navigation 可以绑定 menus、drawers 和 bottom navigation，这里我们以 bottom navigation 为例，我先在 navigation 目录下新创建了 <code>main_navigation.xml</code> ，接着新建了 MainActivity，下面则是 <code>activity_main.xml</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout</span><br><span class="line">    ...&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=&quot;@+id/my_nav_host_fragment&quot;</span><br><span class="line">        android:name=&quot;androidx.navigation.fragment.NavHostFragment&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        app:navGraph=&quot;@navigation/main_navigation&quot;</span><br><span class="line">        app:defaultNavHost=&quot;true&quot;</span><br><span class="line">        android:layout_height=&quot;0dp&quot;</span><br><span class="line">        android:layout_weight=&quot;1&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.google.android.material.bottomnavigation.BottomNavigationView</span><br><span class="line">        android:id=&quot;@+id/navigation_view&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:background=&quot;@android:color/white&quot;</span><br><span class="line">        app:itemIconTint=&quot;@color/colorAccent&quot;</span><br><span class="line">        app:itemTextColor=&quot;@color/colorPrimary&quot;</span><br><span class="line">        app:menu=&quot;@menu/menu_main&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>MainActivity 中的处理也十分简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class MainActivity : AppCompatActivity() &#123;</span><br><span class="line"></span><br><span class="line">    lateinit var bottomNavigationView: BottomNavigationView</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        //...</span><br><span class="line">        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment</span><br><span class="line">        val navController = host.navController</span><br><span class="line">        initWidget()</span><br><span class="line">        initBottomNavigationView(bottomNavigationView,navController)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun initBottomNavigationView(bottomNavigationView: BottomNavigationView, navController: NavController) &#123;</span><br><span class="line">        bottomNavigationView.setupWithNavController(navController)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun initWidget() &#123;</span><br><span class="line">        bottomNavigationView = findViewById(R.id.navigation_view)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="navigation-chapter-1/img6.jpeg" alt></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="navigation-chapter-1/img7.png" alt></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://codelabs.developers.google.com/codelabs/android-navigation/#0" target="_blank" rel="noopener">谷歌实验室</a><br><a href="https://blog.csdn.net/mq2553299/article/details/80445952" target="_blank" rel="noopener">Android官方架构组件Navigation：大巧不工的Fragment管理框架</a></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\21\Android-Jetpack组件：DataBinding\" rel="bookmark">Android-Jetpack组件：DataBinding</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\24\Android-Jetpack组件：Paging\" rel="bookmark">Android-Jetpack组件：Paging</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\23\Android-Jetpack组件：Room\" rel="bookmark">Android-Jetpack组件：Room</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\22\Android-Jetpack组件：ViewModel和LiveData\" rel="bookmark">Android-Jetpack组件：ViewModel和LiveData</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\05\25\Android-Jetpack组件：WorkManager\" rel="bookmark">Android-Jetpack组件：WorkManager</a></div>
+      
+    </li>
+  
+  </ul>
+
+        
+      
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/wechatpay.png" alt="彭真进 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/uploads/alipay.png" alt="彭真进 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>彭真进</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/" title="Android-Jetpack组件：Navigation">http://pengzhenjin.top/2019/05/20/Android-Jetpack组件：Navigation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            
+              <a href="/tags/Jetpack/" rel="tag"><i class="fa fa-tag"></i> Jetpack</a>
+            
+              <a href="/tags/Navigation/" rel="tag"><i class="fa fa-tag"></i> Navigation</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2018/10/18/Java队列详解/" rel="next" title="Java队列详解">
+                  <i class="fa fa-chevron-left"></i> Java队列详解
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/05/21/Android-Jetpack组件：DataBinding/" rel="prev" title="Android-Jetpack组件：DataBinding">
+                  Android-Jetpack组件：DataBinding <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备"><span class="nav-number">1.3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习方式"><span class="nav-number">1.4.</span> <span class="nav-text">学习方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-添加依赖"><span class="nav-number">2.1.</span> <span class="nav-text">第一步 添加依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-创建-navigation-导航"><span class="nav-number">2.2.</span> <span class="nav-text">第二步 创建 navigation 导航</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-建立-NavHostFragment"><span class="nav-number">2.3.</span> <span class="nav-text">第三步 建立 NavHostFragment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步-界面跳转、参数传递和动画"><span class="nav-number">2.4.</span> <span class="nav-text">第四步 界面跳转、参数传递和动画</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">3.</span> <span class="nav-text">更多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="彭真进">
+  <p class="site-author-name" itemprop="name">彭真进</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/pengzhenjin" title="GitHub &rarr; https://github.com/pengzhenjin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:562260994@qq.com" title="E-Mail &rarr; mailto:562260994@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn" title="https://hexo.io/zh-cn" rel="noopener" target="_blank">Hexo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/docs" title="https://theme-next.org/docs" rel="noopener" target="_blank">NexT</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭真进 版权所有</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">417k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">6:19</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'a0aefd8233242f4272c5',
+      clientSecret: '89cbd8c8415d03a931cdeba5a9146e38803a1ad7',
+      repo: 'pengzhenjin.github.io',
+      owner: 'pengzhenjin',
+      admin: ['pengzhenjin'],
+      id: '79251e4ee288e5043079e235d4727bce',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
