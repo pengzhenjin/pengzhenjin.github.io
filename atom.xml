@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://pengzhenjin.top/"/>
-  <updated>2020-04-11T02:11:33.964Z</updated>
+  <updated>2020-06-27T14:49:48.455Z</updated>
   <id>http://pengzhenjin.top/</id>
   
   <author>
@@ -17,11 +17,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>团队项目的Git分支管理规范</title>
+    <link href="http://pengzhenjin.top/2020/06/24/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%9A%84Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/"/>
+    <id>http://pengzhenjin.top/2020/06/24/团队项目的Git分支管理规范/</id>
+    <published>2020-06-23T16:00:00.000Z</published>
+    <updated>2020-06-27T14:49:48.455Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;许多公司的开发团队都采用 Git 来做代码版本控制。如何有效地协同开发人员在开发、测试、上线各个环节的工作，可能都有各自的流程与规范。本文就分享作者一直沿用的团队项目 Git 分支管理规范，希望给有缘阅读的人加以参考，如果有更好的实践，也欢迎探讨、交流，谢谢！&lt;/p&gt;&lt;h3 id=&quot;分支管理&quot;&gt;&lt;a href=&quot;#分支管理&quot; class=&quot;headerlink&quot; title=&quot;分支管理&quot;&gt;&lt;/a&gt;分支管理&lt;/h3&gt;&lt;h4 id=&quot;分支说明&quot;&gt;&lt;a href=&quot;#分支说明&quot; class=&quot;headerlink&quot; title=&quot;分支说明&quot;&gt;&lt;/a&gt;分支说明&lt;/h4&gt;&lt;p&gt;创建项目时，会针对不同环境创建两个常用分支：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="http://pengzhenjin.top/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://pengzhenjin.top/tags/Git/"/>
+    
+      <category term="Git分支管理" scheme="http://pengzhenjin.top/tags/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-Naitve学习总结</title>
+    <link href="http://pengzhenjin.top/2020/06/23/React-Naitve%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>http://pengzhenjin.top/2020/06/23/React-Naitve学习总结/</id>
+    <published>2020-06-22T16:00:00.000Z</published>
+    <updated>2020-06-27T12:42:19.302Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;React Native 结合了 Web 应用和 Native 应用的优势，可以使用 JavaScript 来开发 iOS 和 Android 原生应用。在 JavaScript 中用 React 抽象操作系统原生的 UI 组件，代替 DOM 元素来渲染等。&lt;/p&gt;&lt;p&gt;React Native 使你能够使用基于 JavaScript 和 React 一致的开发体验在本地平台上构建世界一流的应用程序体验。React Native 把重点放在所有开发人员关心的平台的开发效率上——开发者只需学习一种语言就能轻易为任何平台高效地编写代码。Facebook 在多个应用程序产品中使用了 React Native，并将继续为 React Native 投资。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="React-Native" scheme="http://pengzhenjin.top/categories/React-Native/"/>
+    
+    
+      <category term="React-Native" scheme="http://pengzhenjin.top/tags/React-Native/"/>
+    
+      <category term="react-native" scheme="http://pengzhenjin.top/tags/react-native/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网站导航</title>
     <link href="http://pengzhenjin.top/2019/08/23/%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA/"/>
     <id>http://pengzhenjin.top/2019/08/23/网站导航/</id>
     <published>2019-08-22T16:00:00.000Z</published>
-    <updated>2020-04-11T02:11:33.964Z</updated>
+    <updated>2020-06-24T12:26:16.827Z</updated>
     
     <summary type="html">
     
@@ -491,54 +535,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;自定样式&quot;&gt;&lt;a href=&quot;#自定样式&quot; class=&quot;headerlink&quot; title=&quot;自定样式&quot;&gt;&lt;/a&gt;自定样式&lt;/h3&gt;&lt;p&gt;您可以将所有自定义样式文件放在 &lt;code&gt;hexo-size/source/_data&lt;/code&gt; 目录下。&lt;br&gt;编辑 主题配置文件 &lt;code&gt;_config.yml&lt;/code&gt; ，取消 &lt;code&gt;custom_file_path&lt;/code&gt; 前面的注释。&lt;/p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;custom_file_path:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #head: source/_data/head.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #header: source/_data/header.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #sidebar: source/_data/sidebar.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #postMeta: source/_data/post-meta.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #postBodyEnd: source/_data/post-body-end.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #footer: source/_data/footer.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #bodyEnd: source/_data/body-end.swig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #variable: source/_data/variables.styl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #mixin: source/_data/mixins.styl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  style: source/_data/styles.styl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
-    
-      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo搭建个人博客（二）：主题配置</title>
-    <link href="http://pengzhenjin.top/2018/08/16/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
-    <id>http://pengzhenjin.top/2018/08/16/Hexo搭建个人博客（二）：主题配置/</id>
-    <published>2018-08-15T16:00:00.000Z</published>
-    <updated>2019-08-28T05:41:36.038Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;什么是-NexT-？&quot;&gt;&lt;a href=&quot;#什么是-NexT-？&quot; class=&quot;headerlink&quot; title=&quot;什么是 NexT ？&quot;&gt;&lt;/a&gt;什么是 NexT ？&lt;/h3&gt;&lt;p&gt;Next 是专门为 Hexo 而定制的一款主题。它简单、清新、优雅，一个主题，三种外观，而且还支持多种语言，选您所好。&lt;/p&gt;&lt;h3 id=&quot;配置文件说明&quot;&gt;&lt;a href=&quot;#配置文件说明&quot; class=&quot;headerlink&quot; title=&quot;配置文件说明&quot;&gt;&lt;/a&gt;配置文件说明&lt;/h3&gt;&lt;p&gt;在 Hexo 中有两份主要的配置文件，其名称都是 &lt;code&gt;_config.yml&lt;/code&gt;。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
-    
-      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo搭建个人博客（一）：基础安装</title>
-    <link href="http://pengzhenjin.top/2018/08/15/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%AE%89%E8%A3%85/"/>
-    <id>http://pengzhenjin.top/2018/08/15/Hexo搭建个人博客（一）：基础安装/</id>
-    <published>2018-08-14T16:00:00.000Z</published>
-    <updated>2019-08-26T10:12:55.777Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;随着互联网浪潮的翻腾，国内外已经涌现出越来越多优秀的社交网站让用户分享信息更加便捷。然而，如果你是一个不甘堕落的工程狮或程序猿，是否也想要拥有一个属于自己的博客网站呢？如果你曾经或者现在正有这样的想法，那就请跟随这篇文章，发挥你的Geek精神，让你快速拥有自己的博客网站。文章内容如果有错误，请在文章下面的评论中留言指正，谢谢！&lt;/p&gt;
     
     </summary>
     
