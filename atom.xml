@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://pengzhenjin.top/"/>
-  <updated>2020-06-27T14:49:48.455Z</updated>
+  <updated>2020-06-28T10:32:13.260Z</updated>
   <id>http://pengzhenjin.top/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://pengzhenjin.top/2020/06/24/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%9A%84Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/"/>
     <id>http://pengzhenjin.top/2020/06/24/团队项目的Git分支管理规范/</id>
     <published>2020-06-23T16:00:00.000Z</published>
-    <updated>2020-06-27T14:49:48.455Z</updated>
+    <updated>2020-06-28T10:32:13.260Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;许多公司的开发团队都采用 Git 来做代码版本控制。如何有效地协同开发人员在开发、测试、上线各个环节的工作，可能都有各自的流程与规范。本文就分享作者一直沿用的团队项目 Git 分支管理规范，希望给有缘阅读的人加以参考，如果有更好的实践，也欢迎探讨、交流，谢谢！&lt;/p&gt;&lt;h3 id=&quot;分支管理&quot;&gt;&lt;a href=&quot;#分支管理&quot; class=&quot;headerlink&quot; title=&quot;分支管理&quot;&gt;&lt;/a&gt;分支管理&lt;/h3&gt;&lt;h4 id=&quot;分支说明&quot;&gt;&lt;a href=&quot;#分支说明&quot; class=&quot;headerlink&quot; title=&quot;分支说明&quot;&gt;&lt;/a&gt;分支说明&lt;/h4&gt;&lt;p&gt;创建项目时，会针对不同环境创建两个常用分支：&lt;/p&gt;
+      &lt;p&gt;许多公司的开发团队都采用 Git 来做代码版本控制。如何有效地协同开发人员在开发、测试、上线各个环节的工作，可能都有各自的流程与规范。本文就分享作者一直沿用的团队项目 Git 分支管理规范，希望给有缘阅读的人加以参考，如果有更好的实践，也欢迎探讨、交流，谢谢！&lt;/p&gt;&lt;h3 id=&quot;分支管理&quot;&gt;&lt;a href=&quot;#分支管理&quot; class=&quot;headerlink&quot; title=&quot;分支管理&quot;&gt;&lt;/a&gt;分支管理&lt;/h3&gt;&lt;h4 id=&quot;分支说明&quot;&gt;&lt;a href=&quot;#分支说明&quot; class=&quot;headerlink&quot; title=&quot;分支说明&quot;&gt;&lt;/a&gt;分支说明&lt;/h4&gt;&lt;p&gt;创建项目时，会针对不同环境创建几个常用分支：&lt;/p&gt;
     
     </summary>
     
@@ -541,9 +541,9 @@
       <category term="Hexo" scheme="http://pengzhenjin.top/categories/Hexo/"/>
     
     
-      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="Hexo" scheme="http://pengzhenjin.top/tags/Hexo/"/>
+    
+      <category term="博客" scheme="http://pengzhenjin.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="NexT" scheme="http://pengzhenjin.top/tags/NexT/"/>
     
